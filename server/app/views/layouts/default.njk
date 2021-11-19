@@ -4,9 +4,15 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>{{appNameLong}}: {{title}}</title>
+	{% if devEnv %}
 	<link rel="stylesheet" href="/assets/main.css">
 	<script src="/assets/htmxbundle.js" defer></script>
 	<script src="/assets/main.js" defer></script>
+	{% else %}
+	<link rel="stylesheet" href="/assets/main.min.css">
+	<script src="/assets/htmxbundle.min.js" defer></script>
+	<script src="/assets/main.min.js" defer></script>
+	{% endif %}
 	{% if crumb %}
 	<meta name="crumb" content="{{crumb}}">
 	{% endif %}
