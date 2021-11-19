@@ -1,0 +1,55 @@
+.navbar {
+	border-bottom: 1px solid $border;
+}
+
+.help {
+	&.is-above {
+		margin-top: 0;
+		margin-bottom: 0.5rem
+	}
+}
+
+
+.field {
+	&:not(:last-child) {
+    	margin-bottom: 1.5rem
+	}
+}
+
+
+.box {
+	border: 1px solid $border;
+}
+
+
+.control-size-xs {
+	max-width: 15%;
+}
+
+.control-size-sm {
+	max-width: 30%;
+}
+
+.control-size-md {
+	max-width: 50%;
+}
+
+.control-size-lg {
+	max-width: 70%
+}
+
+.control-size-xl {
+	max-width: 85%;
+}
+
+
+.table {
+	thead {
+		background: $grey-lightest;
+	}
+	&.is-vcentered {
+		td {
+			vertical-align: middle;
+		}
+	}
+}

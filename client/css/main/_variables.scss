@@ -1,0 +1,48 @@
+// From 0.9.2:
+$yellow: hsl(48,  100%, 67%);
+$green: hsl(141, 53%,  53%);
+$cyan: hsl(204, 71%,  53%);
+$blue: hsl(217, 71%,  53%);
+
+$black: hsl(0, 0%, 4%);
+$black-bis: hsl(0, 0%, 7%);
+$black-ter: hsl(0, 0%, 14%);
+
+$grey-darker: hsl(0, 0%, 21%);
+$grey-dark: hsl(0, 0%, 29%);
+$grey: hsl(0, 0%, 48%);
+$grey-light: hsl(0, 0%, 71%);
+$grey-lighter: hsl(0, 0%, 86%);
+$grey-lightest: hsl(0, 0%, 93%);
+
+$white-ter: hsl(0, 0%, 96%);
+$white-bis: hsl(0, 0%, 98%);
+$white: hsl(0, 0%, 100%);
+
+// Overrides:
+//
+$primary: $blue;
+$light: $grey-lightest;
+
+// $info: hsl(206, 89%, 75%);
+
+// $text-strong: $grey-dark;
+
+$body-size: 14px;
+
+// $size-7: 0.9rem;
+
+// $radius-small: 0;
+// $radius: 0;
+// $radius-large: 0;
+
+$box-shadow: none;
+
+$variable-columns: false;
+$column-gap: 1.5rem;
+
+$icon-dimensions: 20px;
+
+// $navbar-height: 3.5rem !default
+$navbar-padding-vertical: 0.3rem;
+$navbar-padding-horizontal: 0;

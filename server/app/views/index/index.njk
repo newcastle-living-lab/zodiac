@@ -1,0 +1,28 @@
+{% extends 'layouts/default.njk' %}
+
+{% block content %}
+
+<div class="container {{ ui.containerClass }}">
+
+	<h1 class="title">
+		Zodiac
+	</h1>
+	<p class="subtitle">
+		Part of the Living Lab Platform.
+	</p>
+
+	<div class="buttons">
+		<a href="/projects" class="button is-medium">View projects</a>
+		{% if authUser %}
+		<a href="/projects/new" class="button is-medium">Create new project</a>
+		{% endif %}
+		<a href="javascript:;" class="button is-medium">Join a session</a>
+	</div>
+
+	<div class="content">
+		<!-- <pre>{{ auth }}</pre> -->
+	</div>
+
+</div>
+
+{% endblock %}

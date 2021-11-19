@@ -1,0 +1,19 @@
+
+{% macro activity(title, description) %}
+<article class="media">
+	<figure class="media-left">
+		<p class="image is-64x64">
+			<img src="https://via.placeholder.com/64">
+		</p>
+	</figure>
+	<div class="media-content">
+		<div class="content">
+			<p>
+				<strong>{{ title }}</strong>
+				<br>
+				<span class="is-size-7">{{ description }}</span>
+			</p>
+		</div>
+	</div>
+</article>
+{% endmacro %}

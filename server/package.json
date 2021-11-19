@@ -1,0 +1,44 @@
+{
+	"name": "living-lab-zodiac",
+	"version": "1.0.0",
+	"description": "Living Lab Zodiac",
+	"main": "server.js",
+	"bin": "server.js",
+	"dependencies": {
+		"@hapi/boom": "^9.1.4",
+		"@hapi/catbox-redis": "^6.0.2",
+		"@hapi/cookie": "^11.0.2",
+		"@hapi/crumb": "^8.0.1",
+		"@hapi/glue": "^8.0.0",
+		"@hapi/hapi": "^20.2.1",
+		"@hapi/hoek": "^9.2.1",
+		"@hapi/inert": "^6.0.4",
+		"@hapi/vision": "^6.1.0",
+		"@hapi/yar": "^10.1.1",
+		"better-sqlite3": "^7.4.4",
+		"better-sqlite3-helper": "^3.1.6",
+		"config": "^3.3.6",
+		"cross-env": "^6.0.3",
+		"handlebars": "^4.7.7",
+		"hashids": "^2.2.9",
+		"jimp": "^0.9.5",
+		"joi": "^17.4.2",
+		"jsonwebtoken": "^8.5.1",
+		"lodash": "^4.17.21",
+		"nunjucks": "^3.2.3",
+		"nunjucks-date": "^1.5.0",
+		"slugify": "^1.5.0"
+	},
+	"scripts": {
+		"dev": "npm run development",
+		"development": "cross-env NODE_ENV=development server.js",
+		"prod": "npm run production",
+		"production": "cross-env NODE_ENV=production server.js"
+	},
+	"author": "Newcastle University",
+	"license": "MIT",
+	"devDependencies": {
+		"email-templates": "^8.0.8",
+		"nodemailer": "^6.7.1"
+	}
+}

@@ -1,0 +1,13 @@
+{% extends 'layouts/default.njk' %}
+
+{% block content %}
+
+<div class="container {{ ui.containerClass }}">
+
+	<h1 class="title mb-6">{{ title }}</h1>
+
+	{%  include 'projects/_index_table.njk' %}
+
+</div>
+
+{% endblock %}

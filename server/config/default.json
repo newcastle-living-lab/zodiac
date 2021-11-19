@@ -1,0 +1,64 @@
+{
+	"appName": "Zodiac",
+	"appNameLong": "Living Lab Zodiac",
+	// Relative to `data` dir
+	"db": "zodiac.sqlite",
+	// HTTP port for the server
+	"port": 3000,
+	// Salt for Hash IDs for unique IDs
+	"hashids": {
+		"salt": "zodiac",
+		"length": 6
+	},
+	// Debug modes
+	"debug": {
+		"request": [
+			"error",
+			"info"
+		],
+		"log": [
+			"info",
+			"error",
+			"warning"
+		]
+	},
+	// Cache
+	"redisCacheName": false,
+	"redisCache": {
+		"host": "localhost",
+		"port": 6379,
+		"partition": "zodiac"
+	},
+	// yar: for session
+	"yar": {
+		"name": "zodiac_auth",
+		"storeBlank": false,
+		"cookieOptions": {
+			"password": "RANDOM_GENERATED_COOKIE_PASSWORD",
+			"isSecure": false
+		}
+	},
+	// crumb: for CSRF
+	"crumb": {
+		"autoGenerate": true,
+		"restful": false,
+		"cookieOptions": {
+			"isSecure": false,
+			"isHttpOnly": false
+		}
+	},
+	// Email sending
+	"email": {
+		"smtp_host": "localhost",
+		"smtp_port": 25,
+		"smtp_secure": false,
+		"smtp_user": false,
+		"smtp_pass": false,
+		"sender_name": "Living Lab Zodiac",
+		"sender_email": "zodiac@example.com"
+	},
+	// UI/layout
+	"ui": {
+		"containerClass": "is-max-widescreen"
+	}
+}

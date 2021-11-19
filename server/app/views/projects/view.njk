@@ -1,0 +1,64 @@
+{% extends 'layouts/default.njk' %}
+
+{% import './macros/comment.njk' as commentMacro %}
+
+{% block content %}
+
+<div class="container {{ ui.containerClass }}">
+
+	<div class="columns">
+		<div class="column">
+
+			<div class="level">
+				<div class="level-left">
+					<div class="level-item">
+						<h1 class="title mb-0">{{ title }}</h1>
+					</div>
+				</div>
+				<div class="level-right">
+					<div class="level-item">
+						<p class="has-text-grey">Activity 2 of 9</p>
+					</div>
+					{% if isEditable %}
+					<div class="level-item">
+						<a href="/projects/{{ project.project_id | hashid }}/edit" class="button is-dark">Edit</a>
+					</div>
+					<div class="level-item">
+						<a href="/projects/{{ project.project_id | hashid }}/present"  class="button is-success">Present</a>
+					</div>
+					{% endif %}
+				</div>
+			</div>
+
+
+			<article class="message is-info">
+				<div class="message-header">
+					<p>Current Activity: Project Plan</p>
+				</div>
+				<div class="message-body">
+					Plan of the main project area showing various details and it surroundings.
+				</div>
+			</article>
+
+			<figure class="image is-3by2 is-fullwidth">
+				<img src="https://via.placeholder.com/640x480/dbdbdb/222222?text=Current%20Activity%20selected%20by%20presenter">
+			</figure>
+
+		</div>
+	</div>
+
+	<div class="columns">
+		<div class="column">
+			<h2 class="title is-2 block">Comments</h2>
+
+			<p class="block"><a href="javascript:;" class="button is-success is-rounded is-outlined">Add comment</a></p>
+
+			{{ commentMacro.comment("John Smith", "I made this comment about this part of the session. I liked what was being proposed", 1637338887605) }}
+			{{ commentMacro.comment("Fox Mulder", "I made another comment here. I wasn't as happy about this comment and need people to see my perspective", 1637331519081) }}
+			{{ commentMacro.comment("Dana Scully", "A comment was made by a user about this. It was short.", 1637331018081) }}
+		</div>
+	</div>
+
+</div>
+
+{% endblock %}

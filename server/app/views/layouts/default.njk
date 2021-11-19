@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>{{appNameLong}}: {{title}}</title>
+	<link rel="stylesheet" href="/assets/main.css">
+	<script src="/assets/htmxbundle.js" defer></script>
+	<script src="/assets/main.js" defer></script>
+	{% if crumb %}
+	<meta name="crumb" content="{{crumb}}">
+	{% endif %}
+</head>
+<body>
+
+	{% include 'partials/layout/navbar.njk' %}
+
+	<section class="section">
+		{% include 'partials/flash.njk' %}
+		{% block content %}{% endblock %}
+	</section>
+
+	{% include 'partials/layout/footer.njk' %}
+
+</body>
+</html>

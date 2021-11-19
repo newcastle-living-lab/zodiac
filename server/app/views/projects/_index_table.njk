@@ -1,0 +1,23 @@
+<table class="table is-fullwidth">
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Description</th>
+			<th>Date</th>
+		</tr>
+	</thead>
+	<tbody>
+
+		{% for project in projects %}
+		<tr>
+
+			<th><a href="/projects/{{ project.project_id | hashid }}">{{ project.name }}</a></th>
+			<td>{{ project.description }}</td>
+			<td>{{ project.created_at | date }}</td>
+
+		</tr>
+		{% endfor %}
+
+	</tbody>
+
+</table>

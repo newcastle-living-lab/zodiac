@@ -1,0 +1,51 @@
+{% if hasFlash %}
+
+<div class="container {{ui.containerClass}} mb-5">
+
+	{% if flash.success %}
+	<div class="notification is-success is-light">
+		<button class="delete" _="on click transition the closest .notification opacity to 0 over 200ms then remove closest .notification"></button>
+		<ul class="mb-0">
+			{% for msg in flash.success %}
+			<li>{{ msg }}</li>
+			{% endfor %}
+		</ul>
+	</div>
+	{% endif %}
+
+	{% if flash.error %}
+	<div class="notification is-danger is-light">
+		<button class="delete" _="on click transition the closest .notification opacity to 0 over 200ms then remove closest .notification"></button>
+		<ul class="mb-0">
+			{% for msg in flash.error %}
+			<li>{{ msg }}</li>
+			{% endfor %}
+		</ul>
+	</div>
+	{% endif %}
+
+	{% if flash.warning %}
+	<div class="notification is-warning is-light">
+		<button class="delete" _="on click transition the closest .notification opacity to 0 over 200ms then remove closest .notification"></button>
+		<ul class="mb-0">
+			{% for msg in flash.warning %}
+			<li>{{ msg }}</li>
+			{% endfor %}
+		</ul>
+	</div>
+	{% endif %}
+
+	{% if flash.info %}
+	<div class="notification is-info is-light">
+		<button class="delete" _="on click transition the closest .notification opacity to 0 over 200ms then remove closest .notification"></button>
+		<ul class="mb-0">
+			{% for msg in flash.warning %}
+			<li>{{ msg }}</li>
+			{% endfor %}
+		</ul>
+	</div>
+	{% endif %}
+
+</div>
+
+{% endif %}

@@ -1,0 +1,21 @@
+{
+	"name": "living-lab-zodiac-frontend",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"devDependencies": {
+		"bulma": "^0.9.3",
+		"htmx.org": "^1.5.0",
+		"hyperscript.org": "^0.8.2",
+		"laravel-mix": "^6.0.28",
+		"resolve-url-loader": "^4.0.0",
+		"sass": "^1.38.1",
+		"sass-loader": "^12.1.0"
+	}
+}
