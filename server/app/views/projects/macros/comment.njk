@@ -1,5 +1,5 @@
 
-{% macro comment(author, body, date='') %}
+{% macro comment(comment) %}
 <article class="media">
 	<figure class="media-left">
 		<p class="image is-32x32">
@@ -8,11 +8,11 @@
 	</figure>
 	<div class="media-content">
 		<div class="content">
-			<p class="mb-0"><strong>{{ date|date("DD/MM/YYYY @ HH:mm") }}</strong></p>
+			<p class="mb-0"><strong>{{ comment.created_at|date("DD/MM/YYYY @ HH:mm") }}</strong></p>
 			<p class="mb-0 has-text-grey">
-				{{ author }}
+				{{ comment._user_name }}
 			</p>
-			{% if author == 'John Smith' %}
+			{% if comment.is_author == '1' %}
 			<span class="tag is-info">Presenter</span>
 			{% endif %}
 			{# <div class="level mb-2">
@@ -30,7 +30,7 @@
 					{% endif %}
 				</div>
 			</div> #}
-			<p class="is-size-6 mt-2">{{ body }}</p>
+			<p class="is-size-6 mt-2">{{ comment.body }}</p>
 		</div>
 	</div>
 </article>

@@ -1,9 +1,13 @@
 {% import 'projects/macros/comment.njk' as commentMacro %}
 
-<h2 class="title is-5 block">Comments</h2>
+<p class="block"><em>(comments for {{ activity.title }})</em></p>
 
-<p class="block"><a href="javascript:;" class="button is-success is-rounded is-outlined is-small">Add comment</a></p>
+{% for comment in comments %}
 
+{{ commentMacro.comment(comment) }}
+
+{% endfor %}
+{#
 {{ commentMacro.comment("John Smith", "I made this comment about this part of the session. I liked what was being proposed", 1637338887605) }}
 {{ commentMacro.comment("Fox Mulder", "I made another comment here. I wasn't as happy about this comment and need people to see my perspective", 1637331519081) }}
-{{ commentMacro.comment("Dana Scully", "A comment was made by a user about this. It was short.", 1637331018081) }}
+{{ commentMacro.comment("Dana Scully", "A comment was made by a user about this. It was short.", 1637331018081) }} #}

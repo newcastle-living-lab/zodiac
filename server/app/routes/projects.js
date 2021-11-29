@@ -12,6 +12,7 @@ exports.plugin = {
 		const LiveProjectController = require('../controllers/projects_live');
 		const NewActivityController = require('../controllers/activity_new');
 		const ViewActivityController = require('../controllers/activity_view');
+		const NewCommentController = require('../controllers/comments_new');
 
 		/**
 		 * Create new project
@@ -82,6 +83,19 @@ exports.plugin = {
 				method: 'POST',
 				path: '/projects/{hashid}/add_activity',
 				options: NewActivityController.post
+			},
+		]);
+
+		/**
+		 * Comments
+		 *
+		 */
+		server.route([
+			// Create new comment for activity
+			{
+				method: 'POST',
+				path: '/projects/{project_hash}/{activity_hash}/add_comment',
+				options: NewCommentController.post
 			},
 		]);
 

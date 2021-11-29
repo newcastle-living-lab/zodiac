@@ -26,26 +26,25 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var hyperscript_org_eventsource__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! hyperscript.org/eventsource */ "./node_modules/hyperscript.org/dist/eventsource.modern.js");
 /* harmony import */ var _screenshot__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./screenshot */ "./js/screenshot.js");
 
-window.htmx = (htmx_org__WEBPACK_IMPORTED_MODULE_0___default()); // window._hyperscript = _hyperscript;
+window.htmx = (htmx_org__WEBPACK_IMPORTED_MODULE_0___default());
 
 
-
-(0,hyperscript_org_eventsource__WEBPACK_IMPORTED_MODULE_2__["default"])(hyperscript_org__WEBPACK_IMPORTED_MODULE_1__["default"]); // import socket from 'hyperscript.org/socket';
-// import eventsource from 'hyperscript.org/eventsource';
-// import 'hyperscript.org/dist/_hyperscript_w9y.modern.js';
+(0,hyperscript_org_eventsource__WEBPACK_IMPORTED_MODULE_2__["default"])(hyperscript_org__WEBPACK_IMPORTED_MODULE_1__["default"]); // loads eventsource into _hyperscript
 
 
 window.screenshot = {
   takeScreenshot: _screenshot__WEBPACK_IMPORTED_MODULE_3__.takeScreenshot,
   populateFileInput: _screenshot__WEBPACK_IMPORTED_MODULE_3__.populateFileInput
-};
+}; // Get auth token form security from metadata
 
 function getAuthToken() {
   return document.querySelector('meta[name="crumb"]').getAttribute('content');
-}
+} // Configure htmx requests with form security.
+
 
 document.body.addEventListener('htmx:configRequest', function (evt) {
-  evt.detail.parameters['crumb'] = getAuthToken(); // evt.detail.headers['X-CSRF-Token'] = getAuthToken();
+  if (evt.detail.verb.toLowerCase() == 'get') return;
+  evt.detail.parameters['crumb'] = getAuthToken();
 });
 
 /***/ }),

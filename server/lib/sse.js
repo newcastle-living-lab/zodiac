@@ -27,6 +27,21 @@ SSEHandler.prototype.broadcastActivity = function(projectHash, activityHash) {
 
 
 /**
+ * Broadcast 'comment' event on project stream.
+ *
+ */
+SSEHandler.prototype.broadcastComment = function(projectHash, activityHash) {
+	console.log(`broadcastComment(): ${projectHash} + ${activityHash}`);
+	let stream = this.getProjectStream(projectHash);
+	stream.write({
+		event: 'comments',
+		project: projectHash,
+		activity: activityHash
+	});
+}
+
+
+/**
  * Send custom data on a given project stream
  *
  */

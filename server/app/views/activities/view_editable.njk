@@ -17,7 +17,7 @@
 			{%  include 'projects/_activity_panel.njk' %}
 		</div>
 
-		<div class="column is-three-quarters">
+		<div class="column is-half">
 
 			<div class="level">
 				<div class="level-right">
@@ -38,7 +38,7 @@
 
 			<article class="message">
 				<div class="message-header">
-					<p>Current Activity:{{ activity.title }}</p>
+					<p>Current Activity: {{ activity.title }}</p>
 				</div>
 				{%  if activity.description %}
 				<div class="message-body">
@@ -57,13 +57,31 @@
 
 			<hr>
 
-			<h2 class="title is-2 block">Comments</h2>
+		</div>
 
-			<p class="block"><a href="javascript:;" class="button is-success is-rounded is-outlined">Add comment</a></p>
+		<div class="column is-one-quarter" hx-sse="connect:/projects/{{ project.project_id | hashid('project') }}/events">
 
-			{{ commentMacro.comment("John Smith", "I made this comment about this part of the session. I liked what was being proposed", 1637338887605) }}
-			{{ commentMacro.comment("Fox Mulder", "I made another comment here. I wasn't as happy about this comment and need people to see my perspective", 1637331519081) }}
-			{{ commentMacro.comment("Dana Scully", "A comment was made by a user about this. It was short.", 1637331018081) }}
+			<h2 class="title is-5 block">Comments</h2>
+
+			{% if authUser %}
+
+				{% include 'projects/_comment_form.njk' %}
+
+			{% else %}
+
+				<p class="box has-text-centered">
+					<a href="/auth/login">Log in</a> or <a href="/auth/register">create an account</a> to participate.
+				</p>
+
+				<hr>
+
+			{% endif %}
+
+			<div
+				hx-trigger="sse:comments, load"
+				hx-get="/projects/{{ project.project_id | hashid('project') }}/live/comments?activity={{ activity.activity_id | hashid('activity') }}"
+				hx-swap="innerHTML"
+			></div>
 
 		</div>
 

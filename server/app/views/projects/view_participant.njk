@@ -30,9 +30,26 @@
 
 		<div class="column is-one-third">
 
+			<h2 class="title is-5 block">Comments</h2>
+
+			{% if authUser %}
+
+				{% include 'projects/_comment_form' %}
+
+			{% else %}
+
+				<p class="box has-text-centered">
+					<a href="/auth/login">Log in</a> or <a href="/auth/register">create an account</a> to participate.
+				</p>
+
+				<hr>
+
+			{% endif %}
+
 			<div
 				hx-trigger="sse:comments, sse:activity, load"
 				hx-get="/projects/{{ project.project_id | hashid('project') }}/live/comments"
+				hx-swap="innerHTML"
 			></div>
 
 		</div>

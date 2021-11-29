@@ -1,0 +1,26 @@
+<div class="mb-6">
+
+	<form
+		id="add_comment_form"
+		hx-post="/projects/{{ project.project_id | hashid('project') }}/{{ activity.activity_id | hashid('activity') }}/add_comment"
+		hx-target="this"
+	>
+
+		<div class="field mb-3">
+			<div class="control">
+				<textarea
+					class="textarea"
+					name="comment"
+					placeholder="Add your comment"
+					_="on keyup[ctrlKey and code=='Enter'] call htmx.trigger(htmx.find('#comment_btn'), 'click')"
+				></textarea>
+			</div>
+		</div>
+
+		<button class="button is-primary is-fullwidth" id="comment_btn" type="submit">Submit</button>
+
+		{% include 'partials/form_security.njk' %}
+
+	</form>
+
+</div>
