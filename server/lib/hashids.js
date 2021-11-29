@@ -17,7 +17,7 @@ exports.plugin = {
 		];
 
 		models.forEach((name) => {
-			AppHashids[name] = new Hashids(name, options.Config.get('hashids.length'));
+			AppHashids[name] = new Hashids(name, options.Config.get('hashids.length'), options.Config.get('hashids.alphabet'));
 		});
 
 		exports.encode = (model, id) => AppHashids[model].encode(id);

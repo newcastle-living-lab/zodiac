@@ -46,7 +46,7 @@ exports.post = {
 
 	validate: {
 		payload: Joi.object({
-			title: Joi.string().min(2).max(100).required(),
+			name: Joi.string().min(2).max(100).required(),
 			description: Joi.string().optional().allow(''),
 			visibility: Joi.string().valid(...Object.keys(ProjectModel.visibilityOptions)),
 		}),
@@ -62,7 +62,7 @@ exports.post = {
 		request.yar.set('payload', request.payload);
 
 		let data = {
-			title: request.payload.title,
+			name: request.payload.name,
 			description: request.payload.description,
 			visibility: request.payload.visibility,
 		};
@@ -79,7 +79,7 @@ exports.post = {
 		request.yar.clear('payload');
 		request.yar.flash('success', "The new project has been created.");
 
-		let hashId = Hashids.encode(projectId);
+		let hashId = ProjectModel.encodeId(projectId);
 		return h.redirect(`/projects/${hashId}`);
 	}
 

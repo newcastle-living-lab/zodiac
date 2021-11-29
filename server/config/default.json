@@ -7,7 +7,8 @@
 	"port": 3000,
 	// Hash ID config
 	"hashids": {
-		"length": 6
+		"length": 6,
+		"alphabet": "abcdefghjkmnpqrstuvwxyzABCDEFGHJKMNPQRSTUVWXYZ23456789"
 	},
 	// Debug modes
 	"debug": {
