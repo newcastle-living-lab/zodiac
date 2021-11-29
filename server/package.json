@@ -1,7 +1,7 @@
 {
 	"name": "living-lab-zodiac",
-	"version": "1.0.0",
-	"description": "Living Lab Zodiac",
+	"version": "0.0.1",
+	"description": "Living Lab Messier",
 	"main": "server.js",
 	"bin": "server.js",
 	"dependencies": {
