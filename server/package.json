@@ -19,15 +19,19 @@
 		"better-sqlite3-helper": "^3.1.6",
 		"config": "^3.3.6",
 		"cross-env": "^6.0.3",
+		"email-templates": "^8.0.8",
 		"handlebars": "^4.7.7",
+		"hapi-boom-decorators": "^4.1.2",
 		"hashids": "^2.2.9",
 		"jimp": "^0.9.5",
 		"joi": "^17.4.2",
 		"jsonwebtoken": "^8.5.1",
 		"lodash": "^4.17.21",
+		"nodemailer": "^6.7.1",
 		"nunjucks": "^3.2.3",
 		"nunjucks-date": "^1.5.0",
-		"slugify": "^1.5.0"
+		"slugify": "^1.5.0",
+		"susie": "github:newcastle-living-lab/susie"
 	},
 	"scripts": {
 		"dev": "npm run development",
@@ -36,9 +40,5 @@
 		"production": "cross-env NODE_ENV=production server.js"
 	},
 	"author": "Newcastle University",
-	"license": "MIT",
-	"devDependencies": {
-		"email-templates": "^8.0.8",
-		"nodemailer": "^6.7.1"
-	}
+	"license": "MIT"
 }

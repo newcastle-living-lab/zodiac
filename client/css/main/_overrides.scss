@@ -53,3 +53,10 @@
 		}
 	}
 }
+
+
+.panel-block {
+	&.is-active {
+		border-left: 1px solid;
+	}
+}

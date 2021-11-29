@@ -1,0 +1,74 @@
+{% extends 'layouts/default.njk' %}
+
+{% import 'projects/macros/comment.njk' as commentMacro %}
+
+{% block content %}
+
+<div
+	class="container {{ ui.containerClass }}"
+	id="main_view"
+>
+
+	<h1 class="title">{{ title }}</h1>
+
+	<div class="columns">
+
+		<div class="column is-one-quarter">
+			{%  include 'projects/_activity_panel.njk' %}
+		</div>
+
+		<div class="column is-three-quarters">
+
+			<div class="level">
+				<div class="level-right">
+					<div class="level-item">
+						<p class="has-text-grey">Activity {{ activity.position+1 }} of {{ activities.length }}</p>
+					</div>
+					<div class="level-item">
+						<a href="/projects/{{ project.project_id | hashid('project') }}/edit" class="button is-dark">Edit</a>
+					</div>
+					<div class="level-item">
+						<button
+							class="button is-success"
+							hx-post="/projects/{{ project.project_id | hashid('project') }}/broadcast_activity/{{ activity.activity_id | hashid('activity') }}"
+						>Broadcast</button>
+					</div>
+				</div>
+			</div>
+
+			<article class="message">
+				<div class="message-header">
+					<p>Current Activity:{{ activity.title }}</p>
+				</div>
+				{%  if activity.description %}
+				<div class="message-body">
+					{{ activity.description }}
+				</div>
+				{% endif %}
+			</article>
+
+			{% if activity.image_filename.length %}
+				<figure class="image is-fullwidth">
+					<img src="/uploads/{{ activity.image_filename }}" alt="">
+				</figure>
+			{% else %}
+				<div class="content"><em>No media for this activity.</em></div>
+			{% endif %}
+
+			<hr>
+
+			<h2 class="title is-2 block">Comments</h2>
+
+			<p class="block"><a href="javascript:;" class="button is-success is-rounded is-outlined">Add comment</a></p>
+
+			{{ commentMacro.comment("John Smith", "I made this comment about this part of the session. I liked what was being proposed", 1637338887605) }}
+			{{ commentMacro.comment("Fox Mulder", "I made another comment here. I wasn't as happy about this comment and need people to see my perspective", 1637331519081) }}
+			{{ commentMacro.comment("Dana Scully", "A comment was made by a user about this. It was short.", 1637331018081) }}
+
+		</div>
+
+	</div>
+
+</div>
+
+{% endblock %}

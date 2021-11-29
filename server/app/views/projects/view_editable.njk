@@ -1,0 +1,28 @@
+{% extends 'layouts/default.njk' %}
+
+{% import './macros/comment.njk' as commentMacro %}
+
+{% block content %}
+
+<div class="container {{ ui.containerClass }}" id="main_view">
+
+	<h1 class="title">{{ title }}</h1>
+
+	<div class="columns">
+
+		<div class="column is-one-quarter">
+			{%  include 'projects/_activity_panel.njk' %}
+		</div>
+
+		<div class="column is-three-quarters">
+
+		{# Just a blank view for the Editor user to select from the activities. #}
+		{# The resulting pages is /project/{hash}/activity/{hash} page, which includes Broadcast button. #}
+
+		</div>
+
+	</div>
+
+</div>
+
+{% endblock %}

@@ -1,13 +1,21 @@
 'use strict';
 
 const DB = require('better-sqlite3-helper');
+
+const Hashids = require('../../lib/hashids');
+
 const TABLE = 'project';
 const LINK = 'project_user_link';
+
 
 exports.visibilityOptions = {
 	'PUBLIC': 'Public',
 	'UNLISTED': 'Unlisted',
 };
+
+
+exports.encodeId = (id) => Hashids.encode('project', id);
+exports.decodeHash = (hash) => Hashids.decode('project', hash);
 
 
 /**

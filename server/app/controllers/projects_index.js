@@ -3,7 +3,6 @@
 const Joi = require('joi');
 const ProjectModel = require('../models/project');
 const Config = require('config');
-const Hashids = require('../../lib/hashids');
 const Auth = require('../../lib/auth');
 
 

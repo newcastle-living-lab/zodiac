@@ -9933,3 +9933,7 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
 .table.is-vcentered td {
   vertical-align: middle;
 }
+
+.panel-block.is-active {
+  border-left: 1px solid;
+}

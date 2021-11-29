@@ -16,6 +16,7 @@ exports.plugin = {
 		server.ext('onRequest', (request, h) => {
 
 			exports.isProjectEditable = function isProjectEditable(project) {
+				if ( ! project) return false;
 				if ( ! request.auth.isAuthenticated) return false;
 				if ( ! project.hasOwnProperty('_users')) return false;
 				const userId = request.auth.credentials.user_id;

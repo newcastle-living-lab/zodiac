@@ -9,10 +9,19 @@ exports.plugin = {
 
 	async register(plugin, options) {
 
-		const AppHashids = new Hashids(options.Config.get('hashids.salt'), options.Config.get('hashids.length'));
+		let AppHashids = {};
 
-		exports.encode = (id) => AppHashids.encode(id);
-		exports.decode = (hashid) => AppHashids.decode(hashid);
+		let models = [
+			'project',
+			'activity',
+		];
+
+		models.forEach((name) => {
+			AppHashids[name] = new Hashids(name, options.Config.get('hashids.length'));
+		});
+
+		exports.encode = (model, id) => AppHashids[model].encode(id);
+		exports.decode = (model, hashid) => AppHashids[model].decode(hashid);
 
 	}
 

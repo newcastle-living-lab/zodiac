@@ -1,9 +1,8 @@
 'use strict';
 
 const Joi = require('joi');
-const ProjectModel = require('../models/project');
-const Config = require('config');
 const Hashids = require('../../lib/hashids');
+const ProjectModel = require('../models/project');
 
 
 /**
@@ -47,7 +46,7 @@ exports.post = {
 
 	validate: {
 		payload: Joi.object({
-			name: Joi.string().min(2).max(50).required(),
+			title: Joi.string().min(2).max(100).required(),
 			description: Joi.string().optional().allow(''),
 			visibility: Joi.string().valid(...Object.keys(ProjectModel.visibilityOptions)),
 		}),
@@ -63,7 +62,7 @@ exports.post = {
 		request.yar.set('payload', request.payload);
 
 		let data = {
-			name: request.payload.name,
+			title: request.payload.title,
 			description: request.payload.description,
 			visibility: request.payload.visibility,
 		};

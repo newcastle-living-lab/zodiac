@@ -21,7 +21,7 @@ mix.js('js/main.js', Path.join(outPath, outFilename('main.js')));
 
 // HTMX + Hyperscript
 let htmxbundle = [
-	'node_modules/hyperscript.org/dist/_hyperscript.js',
+	'node_modules/hyperscript.org/dist/_hyperscript_w9y.modern.js',
 	'node_modules/htmx.org/dist/htmx.js',
 ];
 mix.scripts(htmxbundle, Path.join(outPath, outFilename('htmxbundle.js')));

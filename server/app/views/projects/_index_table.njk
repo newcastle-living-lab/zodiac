@@ -11,7 +11,7 @@
 		{% for project in projects %}
 		<tr>
 
-			<th><a href="/projects/{{ project.project_id | hashid }}">{{ project.name }}</a></th>
+			<th><a href="/projects/{{ project.project_id | hashid('project') }}">{{ project.name }}</a></th>
 			<td>{{ project.description }}</td>
 			<td>{{ project.created_at | date }}</td>
 

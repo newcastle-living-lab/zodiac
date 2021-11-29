@@ -1,9 +1,47 @@
 {% extends 'layouts/default.njk' %}
 
-{% import './macros/comment.njk' as commentMacro %}
+{# Main page for a participant viewing a project session. #}
+{# SSE events will trigger htmx GETs to /live/{activity|comments} to refresh the UI. #}
 
 {% block content %}
 
+<div
+	class="container {{ ui.containerClass }}"
+	id="main_view"
+	hx-sse="connect:/projects/{{ project.project_id | hashid('project') }}/events"
+>
+
+	<h1 class="title">{{ title }}</h1>
+
+	<hr>
+
+	<div class="columns">
+
+		<div class="column is-two-thirds">
+
+			<div
+				hx-trigger="sse:activity, load"
+				hx-get="/projects/{{ project.project_id | hashid('project') }}/live/activity"
+				hx-swap="innerHTML"
+			></div>
+
+		</div>
+
+
+		<div class="column is-one-third">
+
+			<div
+				hx-trigger="sse:comments, sse:activity, load"
+				hx-get="/projects/{{ project.project_id | hashid('project') }}/live/comments"
+			></div>
+
+		</div>
+
+	</div>
+
+</div>
+
+{#
 <div class="container {{ ui.containerClass }}">
 
 	<div class="columns">
@@ -19,17 +57,8 @@
 					<div class="level-item">
 						<p class="has-text-grey">Activity 2 of 9</p>
 					</div>
-					{% if isEditable %}
-					<div class="level-item">
-						<a href="/projects/{{ project.project_id | hashid }}/edit" class="button is-dark">Edit</a>
-					</div>
-					<div class="level-item">
-						<a href="/projects/{{ project.project_id | hashid }}/present"  class="button is-success">Present</a>
-					</div>
-					{% endif %}
 				</div>
 			</div>
-
 
 			<article class="message is-info">
 				<div class="message-header">
@@ -59,6 +88,6 @@
 		</div>
 	</div>
 
-</div>
+</div> #}
 
 {% endblock %}

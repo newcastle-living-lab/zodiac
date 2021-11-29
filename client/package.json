@@ -15,8 +15,8 @@
 	"license": "ISC",
 	"devDependencies": {
 		"bulma": "^0.9.3",
-		"htmx.org": "^1.5.0",
-		"hyperscript.org": "^0.8.2",
+		"htmx.org": "^1.6.1",
+		"hyperscript.org": "^0.9.0",
 		"laravel-mix": "^6.0.28",
 		"resolve-url-loader": "^4.0.0",
 		"sass": "^1.38.1",

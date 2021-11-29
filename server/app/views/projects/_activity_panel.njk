@@ -1,0 +1,23 @@
+<nav class="panel" hx-boost="true">
+
+	<p class="panel-heading">
+		Activities
+	</p>
+
+	<div class="panel-block">
+		<a href="/projects/{{ project.project_id | hashid('project') }}/add_activity" class="button is-success is-rounded is-outlined is-fullwidth">Add activity</a>
+	</div>
+
+
+	{% for item in activities %}
+
+		{% set url %}/projects/{{ project.project_id | hashid('project') }}/activity/{{ item.activity_id | hashid('activity') }}{% endset %}
+
+		<a
+			class="panel-block {% if activity.activity_id == item.activity_id %}is-active{% endif %}"
+			href="{{ url }}"
+		>{{ item.title }}</a>
+
+	{% endfor %}
+
+</nav>

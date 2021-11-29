@@ -1,5 +1,5 @@
 {
-    "/main.min.js": "/main.min.js",
-    "/main.min.css": "/main.min.css",
-    "/htmxbundle.min.js": "/htmxbundle.min.js"
+    "/main.js": "/main.js",
+    "/main.css": "/main.css",
+    "/htmxbundle.js": "/htmxbundle.js"
 }

@@ -8,7 +8,14 @@
 	</figure>
 	<div class="media-content">
 		<div class="content">
-			<div class="level mb-2">
+			<p class="mb-0"><strong>{{ date|date("DD/MM/YYYY @ HH:mm") }}</strong></p>
+			<p class="mb-0 has-text-grey">
+				{{ author }}
+			</p>
+			{% if author == 'John Smith' %}
+			<span class="tag is-info">Presenter</span>
+			{% endif %}
+			{# <div class="level mb-2">
 				<div class="level-left">
 					<div class="level-item mr-5">
 						<strong>{{ date|date("DD/MM/YYYY @ HH:mm") }}</strong>
@@ -22,8 +29,8 @@
 					</div>
 					{% endif %}
 				</div>
-			</div>
-			<p class="is-size-6 mb-1">{{ body }}</p>
+			</div> #}
+			<p class="is-size-6 mt-2">{{ body }}</p>
 		</div>
 	</div>
 </article>

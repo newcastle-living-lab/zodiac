@@ -19,6 +19,9 @@ const plugins = [
 		plugin: require('@hapi/inert'),
 	},
 	{
+		plugin: require('susie'),
+	},
+	{
 		plugin: './lib/flash',
 	},
 	{
@@ -49,7 +52,13 @@ const plugins = [
 		plugin: './lib/auth',
 	},
 	{
+		plugin: './lib/caches',
+	},
+	{
 		plugin: './lib/htmx',
+	},
+	{
+		plugin: './lib/sse',
 	},
 	{
 		plugin: './app/routes/core'
@@ -162,8 +171,9 @@ exports.options = {
 						nunjucksDate.install(options.compileOptions.environment);
 
 						let hashids = require('../lib/hashids');
-						options.compileOptions.environment.addFilter('hashid', function(id) {
-							return hashids.encode(id);
+
+						options.compileOptions.environment.addFilter('hashid', function(id, model) {
+							return hashids.encode(model, id);
 						});
 
 						return next();

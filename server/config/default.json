@@ -1,13 +1,12 @@
 {
-	"appName": "Zodiac",
-	"appNameLong": "Living Lab Zodiac",
+	"appName": "Messier",
+	"appNameLong": "Living Lab Messier",
 	// Relative to `data` dir
 	"db": "zodiac.sqlite",
 	// HTTP port for the server
 	"port": 3000,
-	// Salt for Hash IDs for unique IDs
+	// Hash ID config
 	"hashids": {
-		"salt": "zodiac",
 		"length": 6
 	},
 	// Debug modes
@@ -54,8 +53,8 @@
 		"smtp_secure": false,
 		"smtp_user": false,
 		"smtp_pass": false,
-		"sender_name": "Living Lab Zodiac",
-		"sender_email": "zodiac@example.com"
+		"sender_name": "Living Lab Messier",
+		"sender_email": "messier@example.com"
 	},
 	// UI/layout
 	"ui": {

@@ -8,6 +8,10 @@ exports.plugin = {
 		const ViewProjectController = require('../controllers/projects_view');
 		const EditProjectController = require('../controllers/projects_edit');
 		const ProjectsIndexController = require('../controllers/projects_index');
+		const ProjectEventController = require('../controllers/projects_events');
+		const LiveProjectController = require('../controllers/projects_live');
+		const NewActivityController = require('../controllers/activity_new');
+		const ViewActivityController = require('../controllers/activity_view');
 
 		/**
 		 * Create new project
@@ -44,6 +48,71 @@ exports.plugin = {
 				path: '/projects/{hashid}/edit',
 				options: EditProjectController.view
 			}
+		]);
+
+		/**
+		 * SSE
+		 *
+		 */
+		server.route([
+			{
+				method: 'GET',
+				path: '/projects/{project_hash}/events',
+				options: ProjectEventController.view
+			},
+			{
+				method: 'POST',
+				path: '/projects/{project_hash}/broadcast_activity/{activity_hash}',
+				options: ProjectEventController.broadcast_activity
+			}
+		]);
+
+		/**
+		 * Add activity
+		 *
+		 */
+		server.route([
+			// Create new activity for project
+			{
+				method: 'GET',
+				path: '/projects/{hashid}/add_activity',
+				options: NewActivityController.view
+			},
+			{
+				method: 'POST',
+				path: '/projects/{hashid}/add_activity',
+				options: NewActivityController.post
+			},
+		]);
+
+		/**
+		 * Live modes
+		 *
+		 */
+		server.route([
+			{
+				method: 'GET',
+				path: '/projects/{project_hash}/live/activity',
+				options: LiveProjectController.activity
+			},
+			{
+				method: 'GET',
+				path: '/projects/{project_hash}/live/comments',
+				options: LiveProjectController.comments
+			}
+		]);
+
+		/**
+		 * View activity
+		 *
+		 */
+		server.route([
+			// View a single activity within a project
+			{
+				method: 'GET',
+				path: '/projects/{project_hash}/activity/{activity_hash}',
+				options: ViewActivityController.view
+			},
 		]);
 
 		/**
