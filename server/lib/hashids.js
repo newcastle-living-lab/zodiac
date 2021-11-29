@@ -21,7 +21,7 @@ exports.plugin = {
 		});
 
 		exports.encode = (model, id) => AppHashids[model].encode(id);
-		exports.decode = (model, hashid) => AppHashids[model].decode(hashid);
+		exports.decode = (model, hashid) => AppHashids[model].decode(hashid)[0];
 
 	}
 
