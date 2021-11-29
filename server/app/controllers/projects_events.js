@@ -22,7 +22,11 @@ exports.view = {
 
 	async handler(request, h) {
 		let projectHash = request.params.project_hash;
-		return h.event(SSE.getProjectStream(projectHash), null);
+		return h
+			.event(SSE.getProjectStream(projectHash), null)
+			.header('Connection', 'keep-alive')
+			.header('Cache-Control', 'no-cache');
+
 	}
 
 };
