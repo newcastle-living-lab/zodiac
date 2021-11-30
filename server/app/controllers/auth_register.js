@@ -40,6 +40,7 @@ exports.registerPost = {
 
 	validate: {
 		payload: Joi.object({
+			name: Joi.string().min(1).max(50).required(),
 			email: Joi.string().min(3).email().required(),
 		}),
 		failAction(request, h, error) {
@@ -60,7 +61,7 @@ exports.registerPost = {
 		}
 
 		// Generate code
-		const code = require('../helpers/code').generateCode(6);
+		const code = require('../helpers/code').generateCode(4);
 
 		// Set subject
 		const appName = Config.get('appNameLong');
@@ -76,6 +77,7 @@ exports.registerPost = {
 		if (mailResult.sent) {
 			// Store code in session to check against
 			request.yar.set('register_code', code);
+			request.yar.set('register_name', request.payload.name);
 			request.yar.set('register_email', request.payload.email);
 			request.yar.flash('success', "Please check your email for a verification code.");
 			return h.redirect('/auth/register/verify');
@@ -126,7 +128,7 @@ exports.registerVerifyPost = {
 
 	validate: {
 		payload: Joi.object({
-			code: Joi.string().length(6).required(),
+			code: Joi.string().length(4).required(),
 		}),
 		failAction(request, h, error) {
 			request.yar.flash('error', error.details[0].message.replace(/['"]+/g, ''));
@@ -136,6 +138,7 @@ exports.registerVerifyPost = {
 
 	async handler(request, h) {
 
+		let name = request.yar.get('register_name');
 		let email = request.yar.get('register_email');
 		let expected_code = request.yar.get('register_code');
 		let user_code = request.payload.code;
@@ -146,13 +149,14 @@ exports.registerVerifyPost = {
 			return h.redirect('/auth/register/verify');
 		}
 
-		const userId = UserModel.createAccount(email);
+		const userId = UserModel.createAccount(name, email);
 
 		if ( ! userId) {
 			request.yar.flash('error', "Your account could not be created.");
 			return h.redirect('/auth/register/verify');
 		}
 
+		request.yar.clear('register_name');
 		request.yar.clear('register_email');
 		request.yar.clear('register_code');
 

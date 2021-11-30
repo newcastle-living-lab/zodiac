@@ -41,7 +41,7 @@ exports.plugin = {
 			// View one project dashboard
 			{
 				method: 'GET',
-				path: '/projects/{hashid}',
+				path: '/projects/{project_hash}',
 				options: ViewProjectController.view
 			},
 			{
@@ -94,7 +94,7 @@ exports.plugin = {
 			// Create new comment for activity
 			{
 				method: 'POST',
-				path: '/projects/{project_hash}/{activity_hash}/add_comment',
+				path: '/projects/{project_hash}/add_comment',
 				options: NewCommentController.post
 			},
 		]);

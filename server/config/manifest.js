@@ -22,6 +22,9 @@ const plugins = [
 		plugin: require('susie'),
 	},
 	{
+		plugin: './lib/socketio',
+	},
+	{
 		plugin: './lib/flash',
 	},
 	{

@@ -1455,7 +1455,7 @@ a.box:active {
   color: #cc0f35;
 }
 .button.is-small {
-  font-size: 0.75rem;
+  font-size: 0.9rem;
 }
 .button.is-small:not(.is-rounded) {
   border-radius: 2px;
@@ -1521,7 +1521,7 @@ a.box:active {
   margin-bottom: 1rem;
 }
 .buttons.are-small .button:not(.is-normal):not(.is-medium):not(.is-large) {
-  font-size: 0.75rem;
+  font-size: 0.9rem;
 }
 .buttons.are-small .button:not(.is-normal):not(.is-medium):not(.is-large):not(.is-rounded) {
   border-radius: 2px;
@@ -1767,7 +1767,7 @@ a.box:active {
   margin-top: 0;
 }
 .content.is-small {
-  font-size: 0.75rem;
+  font-size: 0.9rem;
 }
 .content.is-normal {
   font-size: 1rem;
@@ -2195,7 +2195,7 @@ div.icon-text {
   animation-name: none;
 }
 .progress.is-small {
-  height: 0.75rem;
+  height: 0.9rem;
 }
 .progress.is-medium {
   height: 1.25rem;
@@ -2448,7 +2448,7 @@ div.icon-text {
   border-radius: 4px;
   color: #4a4a4a;
   display: inline-flex;
-  font-size: 0.75rem;
+  font-size: 0.9rem;
   height: 2em;
   justify-content: center;
   line-height: 1.5;
@@ -2525,7 +2525,7 @@ div.icon-text {
   color: #cc0f35;
 }
 .tag:not(body).is-normal {
-  font-size: 0.75rem;
+  font-size: 0.9rem;
 }
 .tag:not(body).is-medium {
   font-size: 1rem;
@@ -2638,7 +2638,7 @@ a.tag:hover {
   font-size: 1rem;
 }
 .title.is-7 {
-  font-size: 0.75rem;
+  font-size: 0.9rem;
 }
 
 .subtitle {
@@ -2673,7 +2673,7 @@ a.tag:hover {
   font-size: 1rem;
 }
 .subtitle.is-7 {
-  font-size: 0.75rem;
+  font-size: 0.9rem;
 }
 
 .heading {
@@ -2814,7 +2814,7 @@ a.tag:hover {
 }
 .is-small.textarea, .is-small.input {
   border-radius: 2px;
-  font-size: 0.75rem;
+  font-size: 0.9rem;
 }
 .is-medium.textarea, .is-medium.input {
   font-size: 1.25rem;
@@ -3051,7 +3051,7 @@ a.tag:hover {
 }
 .select.is-small {
   border-radius: 2px;
-  font-size: 0.75rem;
+  font-size: 0.9rem;
 }
 .select.is-medium {
   font-size: 1.25rem;
@@ -3076,7 +3076,7 @@ a.tag:hover {
   transform: none;
 }
 .select.is-loading.is-small:after {
-  font-size: 0.75rem;
+  font-size: 0.9rem;
 }
 .select.is-loading.is-medium:after {
   font-size: 1.25rem;
@@ -3292,7 +3292,7 @@ a.tag:hover {
   color: #fff;
 }
 .file.is-small {
-  font-size: 0.75rem;
+  font-size: 0.9rem;
 }
 .file.is-normal {
   font-size: 1rem;
@@ -3460,7 +3460,7 @@ a.tag:hover {
   margin-bottom: 0.5em;
 }
 .label.is-small {
-  font-size: 0.75rem;
+  font-size: 0.9rem;
 }
 .label.is-medium {
   font-size: 1.25rem;
@@ -3471,7 +3471,7 @@ a.tag:hover {
 
 .help {
   display: block;
-  font-size: 0.75rem;
+  font-size: 0.9rem;
   margin-top: 0.25rem;
 }
 .help.is-white {
@@ -3631,7 +3631,7 @@ a.tag:hover {
     text-align: right;
   }
   .field-label.is-small {
-    font-size: 0.75rem;
+    font-size: 0.9rem;
     padding-top: 0.375em;
   }
   .field-label.is-normal {
@@ -3686,7 +3686,7 @@ a.tag:hover {
 .control.has-icons-left .input.is-small ~ .icon,
 .control.has-icons-left .select.is-small ~ .icon, .control.has-icons-right .input.is-small ~ .icon,
 .control.has-icons-right .select.is-small ~ .icon {
-  font-size: 0.75rem;
+  font-size: 0.9rem;
 }
 .control.has-icons-left .input.is-medium ~ .icon,
 .control.has-icons-left .select.is-medium ~ .icon, .control.has-icons-right .input.is-medium ~ .icon,
@@ -3728,7 +3728,7 @@ a.tag:hover {
   z-index: 4;
 }
 .control.is-loading.is-small:after {
-  font-size: 0.75rem;
+  font-size: 0.9rem;
 }
 .control.is-loading.is-medium:after {
   font-size: 1.25rem;
@@ -3790,7 +3790,7 @@ a.tag:hover {
   justify-content: flex-end;
 }
 .breadcrumb.is-small {
-  font-size: 0.75rem;
+  font-size: 0.9rem;
 }
 .breadcrumb.is-medium {
   font-size: 1.25rem;
@@ -4141,7 +4141,7 @@ button.dropdown-item.is-active {
   font-size: 1rem;
 }
 .menu.is-small {
-  font-size: 0.75rem;
+  font-size: 0.9rem;
 }
 .menu.is-medium {
   font-size: 1.25rem;
@@ -4199,7 +4199,7 @@ button.dropdown-item.is-active {
   text-decoration: underline;
 }
 .message.is-small {
-  font-size: 0.75rem;
+  font-size: 0.9rem;
 }
 .message.is-medium {
   font-size: 1.25rem;
@@ -5461,7 +5461,7 @@ body.has-spaced-navbar-fixed-bottom {
   margin: -0.25rem;
 }
 .pagination.is-small {
-  font-size: 0.75rem;
+  font-size: 0.9rem;
 }
 .pagination.is-medium {
   font-size: 1.25rem;
@@ -5953,7 +5953,7 @@ label.panel-block:hover {
   padding-right: 1.25em;
 }
 .tabs.is-small {
-  font-size: 0.75rem;
+  font-size: 0.9rem;
 }
 .tabs.is-medium {
   font-size: 1.25rem;
@@ -8354,7 +8354,7 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
 }
 
 .is-size-7 {
-  font-size: 0.75rem !important;
+  font-size: 0.9rem !important;
 }
 
 @media screen and (max-width: 768px) {
@@ -8383,7 +8383,7 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
   }
 
   .is-size-7-mobile {
-    font-size: 0.75rem !important;
+    font-size: 0.9rem !important;
   }
 }
 @media screen and (min-width: 769px), print {
@@ -8412,7 +8412,7 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
   }
 
   .is-size-7-tablet {
-    font-size: 0.75rem !important;
+    font-size: 0.9rem !important;
   }
 }
 @media screen and (max-width: 1023px) {
@@ -8441,7 +8441,7 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
   }
 
   .is-size-7-touch {
-    font-size: 0.75rem !important;
+    font-size: 0.9rem !important;
   }
 }
 @media screen and (min-width: 1024px) {
@@ -8470,7 +8470,7 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
   }
 
   .is-size-7-desktop {
-    font-size: 0.75rem !important;
+    font-size: 0.9rem !important;
   }
 }
 @media screen and (min-width: 1216px) {
@@ -8499,7 +8499,7 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
   }
 
   .is-size-7-widescreen {
-    font-size: 0.75rem !important;
+    font-size: 0.9rem !important;
   }
 }
 @media screen and (min-width: 1408px) {
@@ -8528,7 +8528,7 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
   }
 
   .is-size-7-fullhd {
-    font-size: 0.75rem !important;
+    font-size: 0.9rem !important;
   }
 }
 .has-text-centered {

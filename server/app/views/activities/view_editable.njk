@@ -4,10 +4,14 @@
 
 {% block content %}
 
-<div
-	class="container {{ ui.containerClass }}"
-	id="main_view"
->
+<script type="text/hyperscript">
+init
+	set project_hash to '{{ project.project_id | hashid('project') }}'
+	send app:join_project(project_hash:project_hash) to body
+end
+</script>
+
+<div class="container {{ ui.containerClass }}" id="main_view">
 
 	<h1 class="title">{{ title }}</h1>
 
@@ -20,25 +24,27 @@
 		<div class="column is-half">
 
 			<div class="level">
-				<div class="level-right">
-					<div class="level-item">
-						<p class="has-text-grey">Activity {{ activity.position+1 }} of {{ activities.length }}</p>
-					</div>
-					<div class="level-item">
-						<a href="/projects/{{ project.project_id | hashid('project') }}/edit" class="button is-dark">Edit</a>
-					</div>
+				<div class="level-left">
 					<div class="level-item">
 						<button
 							class="button is-success"
 							hx-post="/projects/{{ project.project_id | hashid('project') }}/broadcast_activity/{{ activity.activity_id | hashid('activity') }}"
 						>Broadcast</button>
 					</div>
+					{# <div class="level-item">
+						<a href="/projects/{{ project.project_id | hashid('project') }}/edit" class="button is-dark">Edit</a>
+					</div> #}
+				</div>
+				<div class="level-right">
+					<div class="level-item">
+						<p class="has-text-grey">Activity {{ activity.position+1 }} of {{ activities.length }}</p>
+					</div>
 				</div>
 			</div>
 
 			<article class="message">
 				<div class="message-header">
-					<p>Current Activity: {{ activity.title }}</p>
+					<p>Activity: {{ activity.title }}</p>
 				</div>
 				{%  if activity.description %}
 				<div class="message-body">
@@ -59,7 +65,7 @@
 
 		</div>
 
-		<div class="column is-one-quarter" hx-sse="connect:/projects/{{ project.project_id | hashid('project') }}/events">
+		<div class="column is-one-quarter">
 
 			<h2 class="title is-5 block">Comments</h2>
 
@@ -78,7 +84,7 @@
 			{% endif %}
 
 			<div
-				hx-trigger="sse:comments, load"
+				hx-trigger="load, new_comments from:body"
 				hx-get="/projects/{{ project.project_id | hashid('project') }}/live/comments?activity={{ activity.activity_id | hashid('activity') }}"
 				hx-swap="innerHTML"
 			></div>

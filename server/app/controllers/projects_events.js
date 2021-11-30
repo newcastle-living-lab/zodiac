@@ -2,6 +2,7 @@
 
 const Caches = require('../../lib/caches');
 const SSE = require('../../lib/sse').SSE;
+const io = require('../../lib/socketio').io;
 
 const ProjectModel = require('../models/project');
 const ActivityModel = require('../models/activity');
@@ -45,7 +46,9 @@ exports.broadcast_activity = {
 		let activityHash = request.params.activity_hash;
 
 		let res = await Caches.Project.set('current_activity_' + projectHash, activityHash);
-		SSE.broadcastActivity(projectHash, activityHash);
+		// SSE.broadcastActivity(projectHash, activityHash);
+		let roomName = `project:${projectHash}`;
+		io.in(roomName).emit('activity', { project: projectHash, activity: activityHash });
 
 		return '';
 

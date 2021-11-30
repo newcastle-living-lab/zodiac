@@ -40,12 +40,6 @@ exports.activity = {
 		return h.view('activities/live_activity', {
 			activity: activity,
 		});
-
-		// @todo get current activity from cache
-		// @todo load activity from DB
-		// @todo load view
-
-		// return `Current activity for ${project.name}: ${activityHash}`;
 	}
 
 };

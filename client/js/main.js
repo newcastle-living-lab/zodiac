@@ -1,12 +1,54 @@
+/**
+ * htmx
+ *
+ */
 import htmx from 'htmx.org';
 window.htmx = htmx;
 
-import _hyperscript from 'hyperscript.org';
-import eventsource from 'hyperscript.org/eventsource';
-eventsource(_hyperscript);	// loads eventsource into _hyperscript
 
+/**
+ * _hyperscript
+ *
+ */
+import _hyperscript from 'hyperscript.org';
+
+
+/**
+ * Screenshots
+ *
+ */
 import { takeScreenshot, populateFileInput } from './screenshot';
 window.screenshot = { takeScreenshot, populateFileInput };
+
+
+/**
+ * Socket IO
+ *
+ */
+const { io } = require("socket.io-client");
+const socket = io();
+
+// _hyperscript will trigger `app:join_project` on the project view page.
+// Use this event to instruct the server to put this socket client in the project 'room'
+document.body.addEventListener('app:join_project', function(evt) {
+	let projectHash = evt.detail.project_hash;
+	console.log(`Joining room for ${projectHash}`);
+	socket.emit('join_project', projectHash);
+});
+
+// Listen for 'activity' events on the socket and send event to <body> for _hyperscript listeners
+socket.on('activity', (params) => {
+	htmx.trigger(htmx.find('body'), "new_activity", params);
+});
+
+// Listen for 'comments' events on the socket and send event to <body> for _hyperscript listeners
+socket.on('comments', (params) => {
+	htmx.trigger(htmx.find('body'), "new_comments", params);
+});
+
+
+
+
 
 
 // Get auth token form security from metadata

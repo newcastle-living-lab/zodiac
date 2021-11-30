@@ -8,7 +8,7 @@ const ActivityModel = require('../models/activity');
 
 
 /**
- * GET: Show New Project page
+ * GET: Show activity viewing page
  *
  */
 exports.view = {
@@ -21,14 +21,15 @@ exports.view = {
 
 	async handler(request, h) {
 
-		let projectId = ProjectModel.decodeHash(request.params.project_hash);
+		let projectHash = request.params.project_hash;
+		let projectId = ProjectModel.decodeHash(projectHash);
 		let project = ProjectModel.getById(projectId);
 
 		let activities = ActivityModel.findByProject(project.project_id);
 
-		let activityId = ActivityModel.decodeHash(request.params.activity_hash);
+		let activityHash = request.params.activity_hash;
+		let activityId = ActivityModel.decodeHash(activityHash);
 		let activity = ActivityModel.getById(activityId);
-
 
 		let isEditable = Auth.isProjectEditable(project);
 
@@ -44,6 +45,8 @@ exports.view = {
 			project: project,
 			activities: activities,
 			activity: activity,
+			projectHash: projectHash,
+			activityHash: activityHash,
 		});
 
 	}

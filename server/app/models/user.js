@@ -28,12 +28,13 @@ exports.getById = function getById(user_id) {
  * Create a new user account with provided details.
  *
  */
-exports.createAccount = function createAccount(email) {
+exports.createAccount = function createAccount(name, email) {
 
 	let user = DB().queryFirstRow(`SELECT user_id FROM "${TABLE}" WHERE email = ?`, email);
 	if (user) return false;
 
 	let data = {
+		name: name,
 		email: email,
 		active: 1,
 	};

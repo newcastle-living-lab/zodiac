@@ -20,6 +20,7 @@
 		"laravel-mix": "^6.0.28",
 		"resolve-url-loader": "^4.0.0",
 		"sass": "^1.38.1",
-		"sass-loader": "^12.1.0"
+		"sass-loader": "^12.1.0",
+		"socket.io-client": "^4.4.0"
 	}
 }

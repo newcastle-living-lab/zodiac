@@ -5,10 +5,16 @@
 
 {% block content %}
 
+<script type="text/hyperscript">
+init
+	set project_hash to '{{ project.project_id | hashid('project') }}'
+	send app:join_project(project_hash:project_hash) to body
+end
+</script>
+
 <div
 	class="container {{ ui.containerClass }}"
 	id="main_view"
-	hx-sse="connect:/projects/{{ project.project_id | hashid('project') }}/events"
 >
 
 	<h1 class="title">{{ title }}</h1>
@@ -20,7 +26,7 @@
 		<div class="column is-two-thirds">
 
 			<div
-				hx-trigger="sse:activity, load"
+				hx-trigger="load, new_activity from:body"
 				hx-get="/projects/{{ project.project_id | hashid('project') }}/live/activity"
 				hx-swap="innerHTML"
 			></div>
@@ -34,7 +40,7 @@
 
 			{% if authUser %}
 
-				{% include 'projects/_comment_form' %}
+				{% include 'projects/_comment_form.njk' %}
 
 			{% else %}
 
@@ -47,7 +53,7 @@
 			{% endif %}
 
 			<div
-				hx-trigger="sse:comments, sse:activity, load"
+				hx-trigger="load, new_activity from:body, new_comments from:body"
 				hx-get="/projects/{{ project.project_id | hashid('project') }}/live/comments"
 				hx-swap="innerHTML"
 			></div>
@@ -57,54 +63,5 @@
 	</div>
 
 </div>
-
-{#
-<div class="container {{ ui.containerClass }}">
-
-	<div class="columns">
-		<div class="column">
-
-			<div class="level">
-				<div class="level-left">
-					<div class="level-item">
-						<h1 class="title mb-0">{{ title }}</h1>
-					</div>
-				</div>
-				<div class="level-right">
-					<div class="level-item">
-						<p class="has-text-grey">Activity 2 of 9</p>
-					</div>
-				</div>
-			</div>
-
-			<article class="message is-info">
-				<div class="message-header">
-					<p>Current Activity: Project Plan</p>
-				</div>
-				<div class="message-body">
-					Plan of the main project area showing various details and it surroundings.
-				</div>
-			</article>
-
-			<figure class="image is-3by2 is-fullwidth">
-				<img src="https://via.placeholder.com/640x480/dbdbdb/222222?text=Current%20Activity%20selected%20by%20presenter">
-			</figure>
-
-		</div>
-	</div>
-
-	<div class="columns">
-		<div class="column">
-			<h2 class="title is-2 block">Comments</h2>
-
-			<p class="block"><a href="javascript:;" class="button is-success is-rounded is-outlined">Add comment</a></p>
-
-			{{ commentMacro.comment("John Smith", "I made this comment about this part of the session. I liked what was being proposed", 1637338887605) }}
-			{{ commentMacro.comment("Fox Mulder", "I made another comment here. I wasn't as happy about this comment and need people to see my perspective", 1637331519081) }}
-			{{ commentMacro.comment("Dana Scully", "A comment was made by a user about this. It was short.", 1637331018081) }}
-		</div>
-	</div>
-
-</div> #}
 
 {% endblock %}

@@ -6,45 +6,11 @@ const Boom = require('@hapi/boom');
 const Joi = require('joi');
 const Auth = require('../../lib/auth');
 const Caches = require('../../lib/caches');
-const SSE = require('../../lib/sse').SSE;
+// const SSE = require('../../lib/sse').SSE;
+const io = require('../../lib/socketio').io;
 const ProjectModel = require('../models/project');
 const ActivityModel = require('../models/activity');
 const CommentModel = require('../models/comment');
-
-
-/**
- * GET: Show New Project page
- *
- */
-// exports.view = {
-
-// 	description: 'Add new activity to project',
-
-// 	auth: {
-// 		mode: 'required'
-// 	},
-
-// 	async handler(request, h) {
-
-// 		let payload = request.yar.get('payload', true);
-
-// 		let projectId = ProjectModel.decodeHash(request.params.hashid);
-// 		let project = ProjectModel.getById(projectId);
-// 		let isEditable = Auth.isProjectEditable(project);
-
-// 		if ( ! project) return h.notFound('Could not find project.');
-// 		if ( ! isEditable) throw h.forbidden('You cannot add activities to this project.');
-
-// 		return h.view('activities/new', {
-// 			title: 'Add activity',
-// 			project: project,
-// 			project_hash_id: request.params.hashid,
-// 			payload: payload,
-// 		});
-
-// 	}
-
-// };
 
 
 /**
@@ -61,9 +27,14 @@ exports.post = {
 
 	validate: {
 		payload: Joi.object({
+			activity: Joi.string().required(),
 			comment: Joi.string().min(2).required(),
 		}),
 		failAction(request, h, error) {
+
+			let viewData = {
+
+			}
 			// @todo an error view
 			// user htmx error placement to put it somewhere else
 			return 'Error submitting comment.';
@@ -83,7 +54,7 @@ exports.post = {
 		let project = ProjectModel.getById(projectId);
 		if ( ! project) return h.notFound('Could not find project.');
 
-		let activityHash = request.params.activity_hash;
+		let activityHash = request.payload.activity;
 		let activityId = ActivityModel.decodeHash(activityHash);
 		let activity = ActivityModel.getById(activityId);
 
@@ -91,8 +62,8 @@ exports.post = {
 
 		// Data for form view
 		let viewData = {
-			project: project,
-			activity: activity,
+			projectHash: projectHash,
+			activityHash: activityHash,
 		};
 
 		// Data for comment to add
@@ -113,7 +84,9 @@ exports.post = {
 		}
 
 		// Broadcast new activity for comments
-		SSE.broadcastComment(projectHash, activityHash);
+		// SSE.broadcastComment(projectHash, activityHash);
+		let roomName = `project:${projectHash}`;
+		io.in(roomName).emit('comments', { project: projectHash, activity: activityHash });
 
 		return formView(h, viewData);
 	}

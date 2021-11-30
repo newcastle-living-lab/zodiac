@@ -2,22 +2,32 @@
 
 	<form
 		id="add_comment_form"
-		hx-post="/projects/{{ project.project_id | hashid('project') }}/{{ activity.activity_id | hashid('activity') }}/add_comment"
+		hx-post="/projects/{{ projectHash }}/add_comment"
 		hx-target="this"
+		hx-trigger="submit, addcomment"
 	>
 
 		<div class="field mb-3">
+
+			<input
+				type="hidden"
+				name="activity"
+				value="{% if activityHash %}{{ activityHash }}{% endif %}"
+				_="on new_activity from <body/> put event.detail.activity into my value"
+			>
+
 			<div class="control">
 				<textarea
 					class="textarea"
 					name="comment"
 					placeholder="Add your comment"
-					_="on keyup[ctrlKey and code=='Enter'] call htmx.trigger(htmx.find('#comment_btn'), 'click')"
+					autofocus="true"
+					_="on keyup[ctrlKey and code=='Enter'] trigger addcomment"
 				></textarea>
 			</div>
 		</div>
 
-		<button class="button is-primary is-fullwidth" id="comment_btn" type="submit">Submit</button>
+		<button class="button is-primary is-fullwidth" type="submit">Submit</button>
 
 		{% include 'partials/form_security.njk' %}
 

@@ -2,7 +2,8 @@
 
 exports.generateCode = function generateCode(len) {
 
-	const alphabet = '23456789ABCDEFGHJKMNPQRSTUVWXYZabcdefghkmnpqrstuvwxyz';
+	// const alphabet = '23456789ABCDEFGHJKMNPQRSTUVWXYZabcdefghkmnpqrstuvwxyz';
+	const alphabet = '1234567890';
 	const charsLength = alphabet.length;
 
 	const randomBytes = require('crypto').randomBytes(len);

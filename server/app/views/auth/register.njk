@@ -12,8 +12,16 @@
 			<form action="/auth/register" method="post">
 
 				<div class="content">
-					<p>You need to create an account using your email address to participate in or create projects.</p>
+					<p>You need to create an account using your email address to participate in projects or to create your own.</p>
 					<p>After clicking Create Account below, we will send a confirmation code to your email address.</p>
+					<p>Your name will be displayed to others when participating in projects.</p>
+				</div>
+
+				<div class="field">
+					<label class="label">Name</label>
+					<div class="control">
+						<input class="input" type="text" placeholder="" name="name" value="{{payload.name}}" maxlength="50">
+					</div>
 				</div>
 
 				<div class="field">
