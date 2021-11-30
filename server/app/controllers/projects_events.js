@@ -34,7 +34,7 @@ exports.view = {
 
 
 exports.broadcast_activity = {
-	description: 'Broadcast activity as SSE',
+	description: 'Broadcast activity',
 
 	auth: {
 		mode: 'required',
