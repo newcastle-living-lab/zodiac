@@ -18,9 +18,9 @@ const plugins = [
 	{
 		plugin: require('@hapi/inert'),
 	},
-	{
-		plugin: require('susie'),
-	},
+	// {
+	// 	plugin: require('susie'),
+	// },
 	{
 		plugin: './lib/socketio',
 	},
@@ -60,9 +60,9 @@ const plugins = [
 	{
 		plugin: './lib/htmx',
 	},
-	{
-		plugin: './lib/sse',
-	},
+	// {
+	// 	plugin: './lib/sse',
+	// },
 	{
 		plugin: './app/routes/core'
 	},
