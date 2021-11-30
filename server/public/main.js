@@ -243,13 +243,15 @@ var _require = __webpack_require__(/*! socket.io-client */ "./node_modules/socke
 var socket = io(); // _hyperscript will trigger `app:join_project` on the project view page.
 // Use this event to instruct the server to put this socket client in the project 'room'
 
-htmx_org__WEBPACK_IMPORTED_MODULE_0___default().onLoad(function () {
-  document.body.addEventListener('app:join_project', function (evt) {
-    var projectHash = evt.detail.project_hash;
-    console.log("Joining room for ".concat(projectHash));
-    socket.emit('join_project', projectHash);
-  });
-}); // Listen for 'activity' events on the socket and send event to <body> for _hyperscript listeners
+htmx_org__WEBPACK_IMPORTED_MODULE_0___default().on(htmx_org__WEBPACK_IMPORTED_MODULE_0___default().find('body'), 'app:join_project', function (evt) {
+  var projectHash = evt.detail.project_hash;
+  console.log("Joining room for ".concat(projectHash));
+  socket.emit('join_project', projectHash);
+}); // htmx.onLoad(() => {
+// 	document.body.addEventListener('app:join_project', function(evt) {
+// 	});
+// })
+// Listen for 'activity' events on the socket and send event to <body> for _hyperscript listeners
 
 socket.on('activity', function (params) {
   htmx_org__WEBPACK_IMPORTED_MODULE_0___default().trigger(htmx_org__WEBPACK_IMPORTED_MODULE_0___default().find('body'), "new_activity", params);

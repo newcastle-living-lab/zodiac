@@ -30,13 +30,16 @@ const socket = io();
 
 // _hyperscript will trigger `app:join_project` on the project view page.
 // Use this event to instruct the server to put this socket client in the project 'room'
-htmx.onLoad(() => {
-	document.body.addEventListener('app:join_project', function(evt) {
-		let projectHash = evt.detail.project_hash;
-		console.log(`Joining room for ${projectHash}`);
-		socket.emit('join_project', projectHash);
-	});
-})
+htmx.on(htmx.find('body'), 'app:join_project', (evt) => {
+	let projectHash = evt.detail.project_hash;
+	console.log(`Joining room for ${projectHash}`);
+	socket.emit('join_project', projectHash);
+});
+// htmx.onLoad(() => {
+// 	document.body.addEventListener('app:join_project', function(evt) {
+
+// 	});
+// })
 
 // Listen for 'activity' events on the socket and send event to <body> for _hyperscript listeners
 socket.on('activity', (params) => {
