@@ -1,7 +1,6 @@
 'use strict';
 
 const Caches = require('../../lib/caches');
-const SSE = require('../../lib/sse').SSE;
 const io = require('../../lib/socketio').io;
 
 const ProjectModel = require('../models/project');

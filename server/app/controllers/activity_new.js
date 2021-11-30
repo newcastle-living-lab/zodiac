@@ -6,7 +6,8 @@ const Boom = require('@hapi/boom');
 const Joi = require('joi');
 const Auth = require('../../lib/auth');
 const Caches = require('../../lib/caches');
-const SSE = require('../../lib/sse').SSE;
+// const SSE = require('../../lib/sse').SSE;
+const io = require('../../lib/socketio').io;
 const ProjectModel = require('../models/project');
 const ActivityModel = require('../models/activity');
 
@@ -130,7 +131,10 @@ exports.post = {
 
 		// Broadcast new activity
 		let res = await Caches.Project.set('current_activity_' + projectHash, activityHash);
-		SSE.broadcastActivity(projectHash, activityHash);
+
+		// SSE.broadcastActivity(projectHash, activityHash);
+		let roomName = `project:${projectHash}`;
+		io.in(roomName).emit('activity', { project: projectHash, activity: activityHash });
 
 		request.yar.clear('payload');
 		request.yar.flash('success', "The new activity has been added and broadcast to any viewing participants.");
