@@ -16,11 +16,25 @@ exports.plugin = {
 		server.ext('onRequest', (request, h) => {
 
 			exports.isProjectEditable = function isProjectEditable(project) {
-				if ( ! project) return false;
-				if ( ! request.auth.isAuthenticated) return false;
-				if ( ! project.hasOwnProperty('_users')) return false;
+				if ( ! project) {
+					console.log("no project");
+					return false;
+				}
+				if ( ! request.auth.isAuthenticated) {
+					console.log("not authed");
+					return false;
+				}
+				if ( ! project.hasOwnProperty('_users')) {
+					console.log("no _users");
+					return false;
+				}
 				const userId = request.auth.credentials.user_id;
-				if (project._users.hasOwnProperty(`${userId}`)) return true;
+				if (project._users.hasOwnProperty(`${userId}`)) {
+					return true;
+				} else {
+					console.log("user NOT in list!");
+				}
+
 				return false;
 			}
 
