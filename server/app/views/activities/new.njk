@@ -15,7 +15,7 @@
 				<div class="field">
 					<label class="label">Title</label>
 					<div class="control">
-						<input class="input" type="text" name="title" placeholder="" value="{{ payload.title }}" required>
+						<input class="input" type="text" name="title" placeholder="" value="{{ payload.title }}" autofocus="true" required>
 					</div>
 				</div>
 
@@ -26,18 +26,28 @@
 					</div>
 				</div>
 
+				<div class="field">
+					{# <label class="label">Description</label> #}
+					<div class="control">
+						<label class="checkbox">
+							<input type="checkbox" name="broadcast" value="1" checked="checked"> Broadcast to participants
+						</label>
+					</div>
+				</div>
+
 			</div>
 
 			<div class="column is-half">
 
 				<div class="field">
 					<label class="label">Type</label>
+					<p class="help has-text-grey block">Press Ctrl+V / Cmd+V to paste an image.</p>
 					<div class="control block">
 						<div class="tabs is-toggle" _="on click take .is-active from <li/> for the closest <li/> to event.target">
 							<ul>
 								<li class="">
 									<a _="on click set the value of #type to 'image_screenshot'
-										then hide #file_input_control
+										then hide #file_input_control then hide #upload_preview
 										call screenshot.takeScreenshot()
 										-- put the result.encodedData into #screenshot_data
 										put the result.previewCanvas into #screenshot_preview
@@ -46,9 +56,14 @@
 									><span>Take screenshot</span></a>
 								</li>
 								<li class="">
-									<a _="on click set the value of #type to 'image_upload'
+									<a
+										id="tab_upload"
+										_="on click set the value of #type to 'image_upload'
 											then show #file_input_control
-											then put '' into #screenshot_preview"><span>Upload an image</span></a>
+											then show #upload_preview
+											then put '' into #screenshot_preview
+											"
+									><span>Upload an image</span></a>
 								</li>
 							</ul>
 						</div>
@@ -67,7 +82,19 @@
 									class="file-input"
 									accept=".jpg,.jpeg,.png,image/jpeg,image/jpg,image/png"
 									capture=""
-									_="on change if my.files.length > 0 put my.files[0].name into #filename else put '' into #filename end"
+									_="on change
+										if my.files.length > 0
+											put my.files[0].name into #filename
+											then set #upload_preview.src to URL.createObjectURL(my.files[0])
+										else
+											put '' into #filename
+											set #upload_preview.src to ''
+										end
+									on paste from window log event
+										then trigger click on #tab_upload
+										then set my.files to event.clipboardData.files
+										then log my.files
+										then trigger change on me"
 								>
 								<span class="file-cta">
 									<span class="file-label">
@@ -82,6 +109,9 @@
 					</div>
 					<div class="control">
 						<div class="content" id="screenshot_preview"></div>
+						<div class="content">
+							<img id="upload_preview">
+						</div>
 					</div>
 				</div>
 

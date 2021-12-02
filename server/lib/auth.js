@@ -55,7 +55,7 @@ exports.plugin = {
 		// 	const headers = request.headers;
 		// 	// if this request is xmlhttp then return as json
 		// 	if (headers['x-requested-with'] === 'XMLHttpRequest') {
-		// 		throw Boom.unauthorized("Please login to system");
+		// 		throw Boom.unauthorized("Please log in.");
 		// 	}
 		// 	if (reason) {
 		// 		request.yar.flash('error', reason);

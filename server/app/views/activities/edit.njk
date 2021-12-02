@@ -1,0 +1,42 @@
+<div class="modal" _="init add .is-active to me then add .is-clipped to <html/>">
+
+	<div class="modal-background" _="on click remove .is-active from .modal then remove .is-clipped from <html/>"></div>
+
+	<div class="modal-card">
+		<header class="modal-card-head">
+			<p class="modal-card-title">{{ title }}</p>
+			<button class="delete" aria-label="close" _="on click remove .is-active from .modal then remove .is-clipped from <html/>"></button>
+		</header>
+
+		<section class="modal-card-body">
+
+			<form action="/projects/{{ projectHash }}/edit_activity/{{ activityHash }}" method="post" id="edit_activity">
+
+				<div class="field">
+					<label class="label">Title</label>
+					<div class="control">
+						<input class="input" type="text" name="title" placeholder="" value="{{ activity.title }}" required>
+					</div>
+				</div>
+
+				<div class="field">
+					<label class="label">Description</label>
+					<div class="control">
+						<textarea class="textarea" name="description" rows="4">{{ activity.description }}</textarea>
+					</div>
+				</div>
+
+				{% include 'partials/form_security.njk' %}
+
+			</form>
+
+		</section>
+
+		<footer class="modal-card-foot">
+			<button class="button is-success" form="edit_activity">Save changes</button>
+			<button class="button" _="on click remove .is-active from .modal then remove .is-clipped from <html/>">Cancel</button>
+		</footer>
+
+	</div>
+
+</div>

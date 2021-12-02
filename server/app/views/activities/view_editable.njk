@@ -29,11 +29,23 @@ end
 						<button
 							class="button is-success"
 							hx-post="/projects/{{ project.project_id | hashid('project') }}/broadcast_activity/{{ activity.activity_id | hashid('activity') }}"
-						>Broadcast</button>
+							_="on htmx:afterRequest remove .is-invisible from .is-invisible in me"
+						>Broadcast <span class="check ml-2 is-invisible">&#10004;</span></button>
 					</div>
-					{# <div class="level-item">
-						<a href="/projects/{{ project.project_id | hashid('project') }}/edit" class="button is-dark">Edit</a>
-					</div> #}
+					<div class="level-item">
+						<button
+							class="button"
+							hx-get="/projects/{{ project.project_id | hashid('project') }}/edit_activity/{{ activity.activity_id | hashid('activity') }}"
+							hx-target="#modal"
+						>Edit</button>
+					</div>
+					<div class="level-item">
+						<button
+							class="delete"
+							hx-confirm="Are you sure you want to delete this activity?"
+							hx-post="/projects/{{ project.project_id | hashid('project') }}/delete_activity/{{ activity.activity_id | hashid('activity') }}"
+						></button>
+					</div>
 				</div>
 				<div class="level-right">
 					<div class="level-item">
@@ -44,7 +56,7 @@ end
 
 			<article class="message">
 				<div class="message-header">
-					<p>Activity: {{ activity.title }}</p>
+					<p>{{ activity.title }}</p>
 				</div>
 				{%  if activity.description %}
 				<div class="message-body">

@@ -45,7 +45,6 @@ exports.broadcast_activity = {
 		let activityHash = request.params.activity_hash;
 
 		let res = await Caches.Project.set('current_activity_' + projectHash, activityHash);
-		// SSE.broadcastActivity(projectHash, activityHash);
 		let roomName = `project:${projectHash}`;
 		io.in(roomName).emit('activity', { project: projectHash, activity: activityHash });
 

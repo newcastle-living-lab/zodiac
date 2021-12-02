@@ -3,6 +3,7 @@
 const Boom = require('@hapi/boom');
 const Joi = require('joi');
 const Auth = require('../../lib/auth');
+const Caches = require('../../lib/caches');
 const ProjectModel = require('../models/project');
 const ActivityModel = require('../models/activity');
 
@@ -16,7 +17,7 @@ exports.view = {
 	description: 'View activity on a project',
 
 	auth: {
-		mode: 'try'
+		mode: 'required'
 	},
 
 	async handler(request, h) {
@@ -35,6 +36,13 @@ exports.view = {
 
 		if ( ! project) return h.notFound('Could not find project.');
 		if ( ! activity) return h.notFound('Could not find activity.');
+
+		// let currentActivity;
+		// let cacheKey = 'current_activity_' + projectHash;
+		// currentActivity = await Caches.Project.get(cacheKey);
+		// if ( ! currentActivity) {
+		// 	currentActivity = ActivityModel.encodeId(activities[0].activity_id);
+		// }
 
 		let view = (isEditable)
 			? 'view_editable'

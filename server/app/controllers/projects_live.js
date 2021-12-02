@@ -88,7 +88,10 @@ exports.comments = {
 		let comments = CommentModel.findByActivity(activity.activity_id);
 
 		return h.view('activities/live_comments', {
-			activity: activity,
+			deletable: (isEditable),
+			projectHash: projectHash,
+			activityHash: activityHash,
+			// activity: activity,
 			comments: comments,
 		});
 	}

@@ -1,5 +1,5 @@
 {% import 'projects/macros/comment.njk' as commentMacro %}
 
 {% for comment in comments %}
-	{{ commentMacro.comment(comment) }}
+	{{ commentMacro.comment(comment, projectHash, activityHash, deletable) }}
 {% endfor %}

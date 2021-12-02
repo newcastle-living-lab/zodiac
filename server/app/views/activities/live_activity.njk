@@ -32,20 +32,20 @@ figure.zoomable img:hover {
 </style>
 
 {% if activity %}
-<article class="message is-info">
-	<div class="message-header">
-		<p>Current Activity:{{ activity.title }}</p>
-	</div>
-	{%  if activity.description %}
-	<div class="message-body">
-		{{ activity.description }}
-	</div>
-	{% endif %}
-</article>
 
-<figure class="image is-fullwidth zoomable" _="install Zoomable" style="background-image: url(/uploads/{{ activity.image_filename }})">
-	<img src="/uploads/{{ activity.image_filename }}" alt="">
-</figure>
+	<article class="message is-info">
+		<div class="message-header">
+			<p>{{ activity.title }}</p>
+		</div>
+		{%  if activity.description %}
+		<div class="message-body">
+			{{ activity.description }}
+		</div>
+		{% endif %}
+	</article>
 
+	<figure class="image is-fullwidth zoomable" _="install Zoomable" style="background-image: url(/uploads/{{ activity.image_filename }}); background-repeat: no-repeat;">
+		<img src="/uploads/{{ activity.image_filename }}" alt="">
+	</figure>
 
 {% endif %}

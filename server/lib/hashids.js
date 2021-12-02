@@ -14,6 +14,7 @@ exports.plugin = {
 		let models = [
 			'project',
 			'activity',
+			'comment',
 		];
 
 		models.forEach((name) => {

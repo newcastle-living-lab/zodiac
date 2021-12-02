@@ -11,8 +11,11 @@ exports.plugin = {
 		const ProjectEventController = require('../controllers/projects_events');
 		const LiveProjectController = require('../controllers/projects_live');
 		const NewActivityController = require('../controllers/activity_new');
+		const EditActivityController = require('../controllers/activity_edit');
+		const DeleteActivityController = require('../controllers/activity_delete');
 		const ViewActivityController = require('../controllers/activity_view');
 		const NewCommentController = require('../controllers/comments_new');
+		const DeleteCommentController = require('../controllers/comments_delete');
 
 		/**
 		 * Create new project
@@ -87,6 +90,35 @@ exports.plugin = {
 		]);
 
 		/**
+		 * Edit activity
+		 *
+		 */
+		server.route([
+			{
+				method: 'GET',
+				path: '/projects/{project_hash}/edit_activity/{activity_hash}',
+				options: EditActivityController.view
+			},
+			{
+				method: 'POST',
+				path: '/projects/{project_hash}/edit_activity/{activity_hash}',
+				options: EditActivityController.post
+			},
+		]);
+
+		/**
+		 * Delete activity
+		 *
+		 */
+		server.route([
+			{
+				method: 'POST',
+				path: '/projects/{project_hash}/delete_activity/{activity_hash}',
+				options: DeleteActivityController.post
+			},
+		]);
+
+		/**
 		 * Comments
 		 *
 		 */
@@ -96,6 +128,12 @@ exports.plugin = {
 				method: 'POST',
 				path: '/projects/{project_hash}/add_comment',
 				options: NewCommentController.post
+			},
+			// Delete comment
+			{
+				method: 'POST',
+				path: '/projects/{project_hash}/activity/{activity_hash}/delete_comment/{comment_hash}',
+				options: DeleteCommentController.post
 			},
 		]);
 

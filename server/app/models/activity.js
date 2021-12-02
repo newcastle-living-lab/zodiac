@@ -78,3 +78,8 @@ exports.update = function update(activity_id, values) {
 		'position',
 	]);
 }
+
+
+exports.remove = function remove(activity_id) {
+	return DB().delete(TABLE, { activity_id: activity_id });
+}

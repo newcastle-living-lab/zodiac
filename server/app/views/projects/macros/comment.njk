@@ -1,5 +1,5 @@
 
-{% macro comment(comment) %}
+{% macro comment(comment, projectHash, activityHash, deletable) %}
 
 <article class="media">
 	<div class="media-content">
@@ -11,7 +11,16 @@
 				<strong>{{ comment._user_name }}</strong>
 				<span class="has-text-grey ml-2 is-size-7">{{ comment.created_at|date("DD/MM/YYYY @ HH:mm") }}</span>
 			</p>
-			<p class="is-size-6 mt-2">{{ comment.body | striptags(true) | escape | nl2br }}</p>
+			<p class="is-size-6 mt-2">
+				{{ comment.body | striptags(true) | escape | nl2br }}
+				{% if deletable %}
+				<button
+					class="delete is-small is-pulled-right"
+					hx-confirm="Are you sure you want to unpublish this comment?"
+					hx-post="/projects/{{ projectHash }}/activity/{{ activityHash }}/delete_comment/{{ comment.comment_id | hashid('comment') }}"
+				>Delete</button>
+				{% endif %}
+			</p>
 		</div>
 	</div>
 </article>

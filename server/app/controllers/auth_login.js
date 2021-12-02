@@ -50,7 +50,7 @@ exports.loginPost = {
 
 	async handler(request, h) {
 
-		let user = UserModel.getByEmail(request.payload.email);
+		let user = UserModel.getByEmail(request.payload.email.toLowerCase());
 
 		if ( ! user) {
 			request.yar.set('payload', request.payload);
@@ -70,7 +70,7 @@ exports.loginPost = {
 			subject: subject
 		};
 
-		let mailResult = await Mailer.sendMailTemplate(request.payload.email, 'login', data);
+		let mailResult = await Mailer.sendMailTemplate(user.email, 'login', data);
 
 		if (mailResult.sent) {
 			// Store code in session to check against

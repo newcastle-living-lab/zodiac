@@ -39,7 +39,9 @@ exports.findByActivity = function findByActivity(activity_id, sort_column='', or
 					u.email AS _user_email
 				FROM ${TABLE} c
 				INNER JOIN user u USING (user_id)
-				WHERE activity_id = ? ORDER BY ${sortCol} ${orderDir}`
+				WHERE activity_id = ?
+				AND is_published = 1
+				ORDER BY ${sortCol} ${orderDir}`
 	let rows = DB().query(sql, activity_id);
 	return rows;
 };
@@ -72,4 +74,8 @@ exports.update = function update(comment_id, values) {
 		'pos_y',
 		'created_at',
 	]);
+}
+
+exports.unpublish = function unpublish(comment_id) {
+	return DB().update(TABLE, { is_published: 0 }, { comment_id: comment_id });
 }

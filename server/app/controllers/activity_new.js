@@ -63,6 +63,7 @@ exports.post = {
 		payload: Joi.object({
 			title: Joi.string().min(2).max(50).required(),
 			description: Joi.string().optional().allow(''),
+			broadcast: Joi.number(),
 			type: Joi.string().valid('image_upload', 'image_screenshot'),
 			activity_image: Joi.any().required(),
 		}),
@@ -129,15 +130,21 @@ exports.post = {
 
 		let activityHash = ActivityModel.encodeId(activityId);
 
-		// Broadcast new activity
-		let res = await Caches.Project.set('current_activity_' + projectHash, activityHash);
-
-		// SSE.broadcastActivity(projectHash, activityHash);
-		let roomName = `project:${projectHash}`;
-		io.in(roomName).emit('activity', { project: projectHash, activity: activityHash });
-
 		request.yar.clear('payload');
-		request.yar.flash('success', "The new activity has been added and broadcast to any viewing participants.");
+
+		// Broadcast new activity
+		if (request.payload.broadcast == 1) {
+
+			let res = await Caches.Project.set('current_activity_' + projectHash, activityHash);
+
+			let roomName = `project:${projectHash}`;
+			io.in(roomName).emit('activity', { project: projectHash, activity: activityHash });
+
+			request.yar.flash('success', "The new activity has been added and broadcast to any viewing participants.");
+
+		} else {
+			request.yar.flash('success', "The new activity has been added.");
+		}
 
 		return h.redirect(`/projects/${projectHash}/activity/${activityHash}`);
 	}

@@ -6,7 +6,6 @@ const Boom = require('@hapi/boom');
 const Joi = require('joi');
 const Auth = require('../../lib/auth');
 const Caches = require('../../lib/caches');
-// const SSE = require('../../lib/sse').SSE;
 const io = require('../../lib/socketio').io;
 const ProjectModel = require('../models/project');
 const ActivityModel = require('../models/activity');
@@ -84,7 +83,6 @@ exports.post = {
 		}
 
 		// Broadcast new activity for comments
-		// SSE.broadcastComment(projectHash, activityHash);
 		let roomName = `project:${projectHash}`;
 		io.in(roomName).emit('comments', { project: projectHash, activity: activityHash });
 

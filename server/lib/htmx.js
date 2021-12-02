@@ -14,6 +14,7 @@ exports.plugin = {
 
 		plugin.decorate('request', 'hx', hxRequestDecorator(), { apply: true });
 		plugin.decorate('toolkit', 'hxRedirect', HxToolkit.redirect);
+		plugin.decorate('toolkit', 'hxRefresh', HxToolkit.refresh);
 
 	}
 
@@ -43,5 +44,11 @@ HxToolkit.redirect = function(uri) {
 	const response = this.response();
 	// response.type('text/plain');
 	response.header('HX-Redirect', uri);
+	return response;
+}
+
+HxToolkit.refresh = function(uri) {
+	const response = this.response();
+	response.header('HX-Refresh', 'true');
 	return response;
 }
