@@ -1,0 +1,22 @@
+{% extends 'layouts/default.njk' %}
+
+{% block content %}
+
+<div class="container {{ ui.containerClass }}">
+
+	<section class="hero is-danger is-halfheight">
+		<div class="hero-body">
+			<div class="">
+				<p class="title">
+					Error {{statusCode}}
+				</p>
+				<p class="subtitle">
+					{{error}}
+				</p>
+			</div>
+		</div>
+	</section>
+
+</div>
+
+{% endblock %}

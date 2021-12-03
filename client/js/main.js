@@ -46,6 +46,10 @@ socket.on('comments', (params) => {
 	htmx.trigger(htmx.find('body'), "new_comments", params);
 });
 
+socket.on('participant_count', (params) => {
+	htmx.trigger(htmx.find('body'), 'participant_count', { count: parseInt(params, 10) });
+});
+
 
 
 

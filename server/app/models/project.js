@@ -24,6 +24,7 @@ exports.decodeHash = (hash) => Hashids.decode('project', hash);
  */
 exports.getById = function getById(project_id) {
 	let row = DB().queryFirstRow(`SELECT * FROM "${TABLE}" WHERE project_id = ?`, project_id);
+	if ( ! row) return row;
 	row._users = getUsers(row.project_id);
 	return row;
 };

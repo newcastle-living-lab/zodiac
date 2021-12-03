@@ -8,30 +8,6 @@ const ActivityModel = require('../models/activity');
 
 
 
-/**
- * GET: /projects/{hashid}/events: SSE
- *
- */
-exports.view = {
-
-	description: 'Project events',
-
-	auth: {
-		mode: 'try'
-	},
-
-	async handler(request, h) {
-		let projectHash = request.params.project_hash;
-		return h
-			.event(SSE.getProjectStream(projectHash), null)
-			.header('Connection', 'keep-alive')
-			.header('Cache-Control', 'no-cache');
-
-	}
-
-};
-
-
 exports.broadcast_activity = {
 	description: 'Broadcast activity',
 

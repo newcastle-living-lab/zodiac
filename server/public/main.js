@@ -255,6 +255,11 @@ socket.on('activity', function (params) {
 
 socket.on('comments', function (params) {
   htmx_org__WEBPACK_IMPORTED_MODULE_0___default().trigger(htmx_org__WEBPACK_IMPORTED_MODULE_0___default().find('body'), "new_comments", params);
+});
+socket.on('participant_count', function (params) {
+  htmx_org__WEBPACK_IMPORTED_MODULE_0___default().trigger(htmx_org__WEBPACK_IMPORTED_MODULE_0___default().find('body'), 'participant_count', {
+    count: parseInt(params, 10)
+  });
 }); // Get auth token form security from metadata
 
 function getAuthToken() {

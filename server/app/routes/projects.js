@@ -68,15 +68,10 @@ exports.plugin = {
 		]);
 
 		/**
-		 * SSE
+		 * WebSockets
 		 *
 		 */
 		server.route([
-			{
-				method: 'GET',
-				path: '/projects/{project_hash}/events',
-				options: ProjectEventController.view
-			},
 			{
 				method: 'POST',
 				path: '/projects/{project_hash}/broadcast_activity/{activity_hash}',

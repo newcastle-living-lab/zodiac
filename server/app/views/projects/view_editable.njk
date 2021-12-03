@@ -4,6 +4,13 @@
 
 {% block content %}
 
+<script type="text/hyperscript">
+init
+	set project_hash to '{{ project.project_id | hashid('project') }}'
+	send app:join_project(project_hash:project_hash) to body
+end
+</script>
+
 <div class="container {{ ui.containerClass }}" id="main_view">
 
 	<div class="level mb-1">
@@ -26,6 +33,12 @@
 			{% endif %}
 		</div>
 		<div class="level-right">
+			<div class="level-item"  title="Number of participants">
+				<button class="button is-static">
+					<span class="icon is-small"><i class="fas fa-users"></i></span>
+					<span _="on participant_count from body set my innerText to event.detail.count">0</span>
+				</button>
+			</div>
 			<div class="level-item">
 				{% if isEditable %}
 				{% include 'projects/_edit_menu.njk' %}

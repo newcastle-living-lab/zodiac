@@ -28,6 +28,9 @@ const plugins = [
 		plugin: './lib/flash',
 	},
 	{
+		plugin: './lib/errors',
+	},
+	{
 		plugin: './lib/context',
 		options: {
 			Config: Config

@@ -23,10 +23,11 @@ exports.view = {
 	async handler(request, h) {
 
 		let projectHash = request.params.project_hash;
-		console.log(projectHash);
 		let projectId = ProjectModel.decodeHash(projectHash);
-		console.log(projectId);
 		let project = ProjectModel.getById(projectId);
+
+		if ( ! project) return h.notFound("Project not found.");
+
 		let isEditable = Auth.isProjectEditable(project);
 
 		let activities = ActivityModel.findByProject(project.project_id);

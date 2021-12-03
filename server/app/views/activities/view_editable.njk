@@ -34,6 +34,12 @@ end
 		</div>
 		<div class="level-right">
 			<div class="level-item">
+				<button class="button is-static">
+					<span class="icon is-small"><i class="fas fa-users"></i></span>
+					<span _="on participant_count from body set my innerText to event.detail.count">0</span>
+				</button>
+			</div>
+			<div class="level-item">
 				{% if isEditable %}
 				{% include 'projects/_edit_menu.njk' %}
 				{% endif %}

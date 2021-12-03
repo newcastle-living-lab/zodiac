@@ -17,21 +17,21 @@ exports.plugin = {
 
 		io.on('connection', function(socket) {
 
-			console.log("connection!");
-
-			// io.emit('broadcast');
-
-			// socket.emit('Oh hii!');
+			io.of('/').adapter.on('join-room', (roomName) => {
+				const roomClientCount = io.sockets.adapter.rooms.get(roomName).size;
+				// console.log(`room-join: ${roomName} client count is now ${roomClientCount}`);
+				io.in(roomName).emit('participant_count', roomClientCount);
+			});
+			io.of('/').adapter.on('leave-room', (roomName, id) => {
+				const roomClientCount = io.sockets.adapter.rooms.get(roomName).size;
+				// console.log(`room-leave: ${roomName} client count is now ${roomClientCount}`);
+				io.in(roomName).emit('participant_count', roomClientCount);
+			});
 
 			socket.on('join_project', function(projectHash) {
 				let roomName = `project:${projectHash}`;
-				console.log(`${socket.id} joined ${roomName}`);
 				socket.join(roomName);
 			});
-
-			// socket.on('hello', Handlers.hello);
-			// socket.on('newMessage', Handlers.newMessage);
-			// socket.on('goodbye', Handlers.goodbye);
 
 		});
 

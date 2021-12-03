@@ -23,6 +23,14 @@ end
 				<h1 class="title my-0">{{ title }}</h1>
 			</div>
 		</div>
+		<div class="level-right">
+			<div class="level-item">
+				<button class="button is-static">
+					<span class="icon is-small"><i class="fas fa-users"></i></span>
+					<span _="on participant_count from body set my innerText to event.detail.count">0</span>
+				</button>
+			</div>
+		</div>
 	</div>
 
 	{% if project.description %}
