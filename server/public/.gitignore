@@ -1,2 +1,3 @@
 *.min.*
+mix-manifest.json
 /fonts
