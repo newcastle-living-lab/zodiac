@@ -1,6 +1,6 @@
 {
 	"name": "living-lab-zodiac",
-	"version": "0.0.9",
+	"version": "0.0.10",
 	"description": "Living Lab Messier",
 	"main": "server.js",
 	"bin": "server.js",
