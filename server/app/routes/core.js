@@ -23,6 +23,20 @@ exports.plugin = {
 			},
 			{
 				method: 'GET',
+				path: '/fonts/{param*}',
+				options: {
+					auth: false
+				},
+				handler: {
+					directory: {
+						path: Path.join('public', 'fonts'),
+						redirectToSlash: true,
+						index: false,
+					}
+				}
+			},
+			{
+				method: 'GET',
 				path: '/uploads/{param*}',
 				options: {
 					auth: false

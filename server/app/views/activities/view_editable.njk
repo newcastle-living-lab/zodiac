@@ -13,7 +13,39 @@ end
 
 <div class="container {{ ui.containerClass }}" id="main_view">
 
-	<h1 class="title">{{ title }}</h1>
+	<div class="level mb-1">
+		<div class="level-left">
+			<div class="level-item">
+				<h1 class="title my-0">{{ title }}</h1>
+			</div>
+			{% if isEditable %}
+			<div class="level-item">
+				<button
+					class='button is-small is-info is-light is-family-code'
+					_="on click call navigator.clipboard.writeText('{{  project.project_id | hashid('project') }}')
+						then put 'Copied!' into the last <span/> in me
+						wait 1.5s then put '{{  project.project_id | hashid('project') }}' into the last <span/> in me"
+				>
+					<span class="icon is-small"><i class="far fa-copy"></i></span>
+					<span>{{  project.project_id | hashid('project') }}</span>
+				</button>
+			</div>
+			{% endif %}
+		</div>
+		<div class="level-right">
+			<div class="level-item">
+				{% if isEditable %}
+				{% include 'projects/_edit_menu.njk' %}
+				{% endif %}
+			</div>
+		</div>
+	</div>
+
+	{% if project.description %}
+	<p>{{ project.description }}</p>
+	{% endif %}
+
+	<hr>
 
 	<div class="columns">
 

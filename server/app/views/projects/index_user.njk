@@ -4,8 +4,20 @@
 
 <div class="container {{ ui.containerClass }}">
 
-	<a href="/projects/new" class="button is-success is-rounded is-outlined is-pulled-right">Create new project</a>
-	<h1 class="title mb-6">{{ title }}</h1>
+	<div class="level">
+		<div class="level-left">
+			<div class="level-item">
+				<h1 class="title my-0">{{ title }}</h1>
+			</div>
+		</div>
+		<div class="level-left">
+			<div class="level-item">
+				<a href="/projects/new" class="button is-success is-rounded is-outlined is-pulled-right">Create new project</a>
+			</div>
+		</div>
+	</div>
+
+	<hr>
 
 	{% include 'projects/_index_tabs.njk' %}
 

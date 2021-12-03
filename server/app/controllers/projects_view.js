@@ -23,7 +23,9 @@ exports.view = {
 	async handler(request, h) {
 
 		let projectHash = request.params.project_hash;
+		console.log(projectHash);
 		let projectId = ProjectModel.decodeHash(projectHash);
+		console.log(projectId);
 		let project = ProjectModel.getById(projectId);
 		let isEditable = Auth.isProjectEditable(project);
 

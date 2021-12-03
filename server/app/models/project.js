@@ -67,6 +67,14 @@ exports.insert = function insert(values) {
 };
 
 
+exports.update = function update(project_id, values) {
+	return DB().update(TABLE, values, { project_id: project_id }, ['name', 'description', 'visibility']);
+}
+
+exports.remove = function remove(project_id) {
+	return DB().delete(TABLE, { project_id: project_id });
+}
+
 exports.addUser = function addUser(project_id, user_id) {
 	return DB().insert(LINK, { project_id: project_id, user_id: user_id});
 }
@@ -76,10 +84,6 @@ exports.removeUser = function removeUser(project_id, user_id) {
 	return DB().delete(LINK, { project_id: project_id, user_id: user_id});
 }
 
-
-exports.update = function update(user_id, values) {
-	return DB().update(TABLE, values, { user_id: user_id }, ['name', 'email', 'active']);
-}
 
 
 //

@@ -1,0 +1,27 @@
+<div
+	class="dropdown is-right"
+	_="on click from .dropdown-trigger in me toggle .is-active on me then halt the event
+		on click from document remove .is-active from me"
+>
+	<div class="dropdown-trigger">
+		<button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+			<span>Project...</span>
+			<span class="icon is-small">
+				<i class="fas fa-angle-down" aria-hidden="true"></i>
+			</span>
+		</button>
+	</div>
+	<div class="dropdown-menu" id="dropdown-menu" role="menu">
+		<div class="dropdown-content">
+			<a
+				class="dropdown-item"
+				href="/projects/{{ project.project_id | hashid('project') }}/edit"
+			>Edit</a>
+			<a
+				class="dropdown-item"
+				hx-post="/projects/{{ project.project_id | hashid('project') }}/delete"
+				hx-confirm="Are you sure you want to delete this project, activities and comments?"
+			>Delete</a>
+		</div>
+	</div>
+</div>

@@ -49,10 +49,11 @@ exports.view = {
 			: 'view_participant';
 
 		return h.view('activities/' + view, {
-			title: [project.name, ': ', activity.title].join(''),
+			title: project.name,
 			project: project,
 			activities: activities,
 			activity: activity,
+			isEditable: isEditable,
 			projectHash: projectHash,
 			activityHash: activityHash,
 		});

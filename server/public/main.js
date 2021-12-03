@@ -247,11 +247,7 @@ htmx_org__WEBPACK_IMPORTED_MODULE_0___default().on(htmx_org__WEBPACK_IMPORTED_MO
   var projectHash = evt.detail.project_hash;
   console.log("Joining room for ".concat(projectHash));
   socket.emit('join_project', projectHash);
-}); // htmx.onLoad(() => {
-// 	document.body.addEventListener('app:join_project', function(evt) {
-// 	});
-// })
-// Listen for 'activity' events on the socket and send event to <body> for _hyperscript listeners
+}); // Listen for 'activity' events on the socket and send event to <body> for _hyperscript listeners
 
 socket.on('activity', function (params) {
   htmx_org__WEBPACK_IMPORTED_MODULE_0___default().trigger(htmx_org__WEBPACK_IMPORTED_MODULE_0___default().find('body'), "new_activity", params);

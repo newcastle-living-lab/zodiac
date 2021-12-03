@@ -7,13 +7,16 @@ exports.plugin = {
 		const NewProjectController = require('../controllers/projects_new');
 		const ViewProjectController = require('../controllers/projects_view');
 		const EditProjectController = require('../controllers/projects_edit');
+		const DeleteProjectController = require('../controllers/projects_delete');
 		const ProjectsIndexController = require('../controllers/projects_index');
 		const ProjectEventController = require('../controllers/projects_events');
 		const LiveProjectController = require('../controllers/projects_live');
+
 		const NewActivityController = require('../controllers/activity_new');
 		const EditActivityController = require('../controllers/activity_edit');
 		const DeleteActivityController = require('../controllers/activity_delete');
 		const ViewActivityController = require('../controllers/activity_view');
+
 		const NewCommentController = require('../controllers/comments_new');
 		const DeleteCommentController = require('../controllers/comments_delete');
 
@@ -49,8 +52,18 @@ exports.plugin = {
 			},
 			{
 				method: 'GET',
-				path: '/projects/{hashid}/edit',
+				path: '/projects/{project_hash}/edit',
 				options: EditProjectController.view
+			},
+			{
+				method: 'POST',
+				path: '/projects/{project_hash}/edit',
+				options: EditProjectController.post
+			},
+			{
+				method: 'POST',
+				path: '/projects/{project_hash}/delete',
+				options: DeleteProjectController.post
 			}
 		]);
 
