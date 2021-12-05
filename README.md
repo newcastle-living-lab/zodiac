@@ -1,4 +1,4 @@
-<!-- [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4058570.svg)](https://zenodo.org/record/4058570) -->
+<a href="https://doi.org/10.5281/zenodo.5759920"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.5759920.svg" alt="DOI"></a>
 
 # Messier
 
